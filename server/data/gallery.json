@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Community Gathering",
+    "description": "Elders sharing stories and cultural traditions with community members.",
+    "image": "/IMAGES/photo1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Environmental Conservation",
+    "description": "Team working on sustainable practices informed by indigenous knowledge.",
+    "image": "/IMAGES/photo2.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Cultural Heritage Workshop",
+    "description": "Youth learning traditional practices and language preservation.",
+    "image": "/IMAGES/photo3.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Nature Protection Initiative",
+    "description": "Collaborative efforts to protect local ecosystems and biodiversity.",
+    "image": "/IMAGES/photo4.jpg"
+  }
+]
