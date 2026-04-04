@@ -1,0 +1,24 @@
+{
+  "partnerships": [
+    {
+      "id": 1,
+      "image": "IMAGES/handshake1.jpg",
+      "alt": "Partnership handshake"
+    },
+    {
+      "id": 2,
+      "image": "IMAGES/handshake2.jpg",
+      "alt": "Partnership collaboration"
+    },
+    {
+      "id": 3,
+      "image": "IMAGES/handshake3.jpg",
+      "alt": "Team partnership"
+    },
+    {
+      "id": 4,
+      "image": "IMAGES/handshake4.jpg",
+      "alt": "Business partnership"
+    }
+  ]
+}

@@ -33,29 +33,61 @@
     </div>
 
     <section class="what-we-do">
-      <h2>WHAT WE DO</h2>
-      <h5>Cultural Revival</h5>
-      <p>
-        Documenting and celebrating Luhya heritage through oral histories, songs, and proverbs.
-      
-      </p>
-      <h5>Environmental Action</h5>
-      <p>
-        Translating traditional ecological knowledge into tangible conservation projects.
-      </p>
-      <h5>Intergenerational Bridge</h5>
-      <p>Creating spaces where elders and youth share, learn, and grow together.</p>
-      <h5>Community Resilience</h5>
-      <p>Building a more sustainable and culturally vibrant Vihiga, one story and one   tree at a time
-      
-      </p>
-        <div id="part-of-circle">
-            <h2 >Be Part of the Circle</h2>
-           <p>
-           Our work is driven by community. Whether you have a story to share, hands ready to plant, or a passion to support, there is a place for you here.
-         </p>
-      <a href="contact.html" class="btn">Get Involved Today</a>
+      <div id="what-we-do-NASCEC">
+        <h2>WHAT WE DO</h2>
+        <h5 style="color:brown;font-size:30px;">Cultural Revival</h5>
+        <p>
+          Documenting and celebrating Luhya heritage through oral histories, songs, and proverbs.
+        </p>
+        <h5 style="color:green;font-size:30px">Environmental Action</h5>
+        <p>
+          Translating traditional ecological knowledge into tangible conservation projects.
+        </p>
+        <h5 style="color:orange;font-size:30px">Intergenerational Bridge</h5>
+        <p>Creating spaces where elders and youth share, learn, and grow together.</p>
+        <h5 style="color:rgb(0, 204, 255);font-size:30px">Community Resilience</h5>
+        <p>Building a more sustainable and culturally vibrant Vihiga, one story and one tree at a time.</p>
+      </div>
+      <div id="nascec-video">
+        <h2>NASCEC Video</h2>
+        <div class="video-wrapper">
+          <video controls poster="IMAGES/video-poster.jpg">
+            <source src="IMAGES/nascec-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
+        <p>See NASCEC in action: elders, youth, storytelling, and conservation work together to protect nature and culture.</p>
+      </div>
+      </section>
+
+      <section class="partner-section">
+        <div class="partner-container">
+          <div id="partner-with-us">
+            <h2>Partner With Us</h2>
+            <p>NASCEC is seeking partnerships with like-minded organizations, businesses, and individuals who share our vision of preserving cultural heritage and protecting the environment.</p>
+            <h5 style="color:#316d2b;font-size:24px;">Why Partner With NASCEC?</h5>
+            <ul style="list-style: none; padding-left: 0;">
+              <li style="margin-bottom: 12px;">✓ Direct impact on community and environmental conservation</li>
+              <li style="margin-bottom: 12px;">✓ Authentic connection with indigenous wisdom and practices</li>
+              <li style="margin-bottom: 12px;">✓ Support for intergenerational knowledge transfer</li>
+              <li style="margin-bottom: 12px;">✓ Build your brand around meaningful conservation efforts</li>
+            </ul>
+            <a href="contact.html" class="btn">Start a Partnership</a>
+          </div>
+          <div class="partnership-gallery" id="partnership-gallery">
+            <!-- Images loaded dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <section class="get-involved">
+      <div id="part-of-circle">
+        <h2>Be Part of the Circle</h2>
+        <p>
+          Our work is driven by community. Whether you have a story to share, hands ready to plant, or a passion to support, there is a place for you here.
+        </p>
+        <a href="contact.html" class="btn">Get Involved Today</a>
+      </div>
     </section>
 
   </main>
@@ -63,6 +95,56 @@
   <footer>
     © 2026 Native Storytelling for Culture and Environment Conservation (NASCEC)
   </footer>
+
+  <script>
+    let partnershipImages = [];
+    let currentImageIndex = 0;
+
+    // Load partnership gallery dynamically with slideshow
+    async function loadPartnershipGallery() {
+      try {
+        const response = await fetch('/partnerships.json');
+        const data = await response.json();
+        const gallery = document.getElementById('partnership-gallery');
+        
+        // Store all images
+        partnershipImages = data.partnerships;
+        
+        if (partnershipImages.length > 0) {
+          // Display first image
+          displayImage(0);
+          
+          // Auto-rotate images every 4 seconds
+          setInterval(rotateImage, 4000);
+        }
+      } catch (error) {
+        console.error('Error loading partnership gallery:', error);
+      }
+    }
+
+    // Display a specific image
+    function displayImage(index) {
+      const gallery = document.getElementById('partnership-gallery');
+      gallery.innerHTML = '';
+      
+      if (partnershipImages[index]) {
+        const img = document.createElement('img');
+        img.src = partnershipImages[index].image;
+        img.alt = partnershipImages[index].alt;
+        img.classList.add('slideshow-image');
+        gallery.appendChild(img);
+      }
+    }
+
+    // Rotate to next image
+    function rotateImage() {
+      currentImageIndex = (currentImageIndex + 1) % partnershipImages.length;
+      displayImage(currentImageIndex);
+    }
+
+    // Load gallery when page loads
+    document.addEventListener('DOMContentLoaded', loadPartnershipGallery);
+  </script>
   
   </body>
   </html>

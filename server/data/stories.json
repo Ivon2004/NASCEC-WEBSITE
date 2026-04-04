@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "title": "Empowering Local Communities",
+    "description": "How community-driven innovation is shaping sustainable futures.",
+    "image": "IMAGES/photo1.jpg",
+    "content": "Community-driven innovation is transforming how we approach sustainable development. Local communities are taking the lead in creating solutions that address their unique challenges while building stronger connections among residents. Through collaborative efforts and shared vision, these projects demonstrate how grassroots initiatives can create lasting positive change."
+  },
+  {
+    "id": 2,
+    "title": "Innovation Through Technology",
+    "description": "Using digital tools to solve real-world problems.",
+    "image": "IMAGES/photo2.jpg",
+    "content": "Technology has become a powerful tool for solving complex real-world challenges. From mobile applications that connect people to resources, to digital platforms that facilitate education, innovative tech solutions are making a difference. Organizations are leveraging digital transformation to increase efficiency, reach more people, and create scalable solutions to pressing problems."
+  },
+  {
+    "id": 3,
+    "title": "Youth and Climate Action",
+    "description": "Young people taking the lead in environmental protection.",
+    "image": "IMAGES/photo3.jpg",
+    "content": "The next generation is stepping up to lead climate action initiatives. Youth-led movements are driving awareness about environmental issues and pushing for systemic change. From organizing community clean-ups to advocating for policy changes, young people are proving they are powerful agents of change in the fight against climate change."
+  },
+{
+  "id": 4,
+  "title": "Our Impact Documentary",
+  "description": "Watch how we're making a difference in communities.",
+  "image": "IMAGES/video-thumbnail.jpg",
+  "content": "This documentary showcases our projects and impact...",
+  "video": "VIDEOS/documentary.mp4"
+}
+]
