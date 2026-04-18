@@ -1,15 +1,18 @@
-<!DOCTYPE html>
+<!DOCTYPE html lang="en">
 <html>
 <head>
-  <title>NASCEC | Home</title> <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NASCEC | Home</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <main class="main">
     <header>
-     <div id="logo_container">
-       <img src="IMAGES/logo.jpeg" alt="NASCEC Logo" class="logo">
-      <h1>NASCEC</h1>
-     </div>
+      <div id="logo_container">
+        <img src="IMAGES/logo.jpeg" alt="NASCEC Logo" class="logo">
+        <h1>NASCEC</h1>
+      </div>
       <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
@@ -21,14 +24,20 @@
     </header>
 
     <div class="hero">
+      <div class="hero-background" aria-hidden="true">
+        <div class="hero-slide active" style="background-image: url('IMAGES/background.jpeg');"></div>
+        <div class="hero-slide" style="background-image: url('IMAGES/elders.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('IMAGES/tree_planting.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('IMAGES/festival.jpg');"></div>
+      </div>
       <div id="blurred">
         <h2>PRESERVING OUR ROOTS, PROTECTING OUR FUTURE.</h2>
         <h4>Harnessing the power of indigenous storytelling to champion cultural heritage and environmental conservation in Vihiga County</h4>
-      <p>
-       Welcome to Native Storytelling for Culture and Environmental Conservation (NASCEC) CBO, a community-powered initiative born in the heart of Vihiga County. In NASCEC, we believe that the indigenous wisdom carried in our elders' stories holds the key to a sustainable green future. Our mission is simple yet profound: to revive our rich cultural ecological consciousness and restore our natural environment by bridging generations through the timeless art of native storytelling. We are not just conserving; we are re-activating the deep, indigenous knowledge that did sustain our community for centuries.
-      </p>
-      <a href="programs.html" class="btn">Our Programs</a>
-      <a href="stories.html" class="btn">Community Stories</a>
+        <p>
+          Welcome to Native Storytelling for Culture and Environmental Conservation (NASCEC) CBO, a community-powered initiative born in the heart of Vihiga County. In NASCEC, we believe that the indigenous wisdom carried in our elders' stories holds the key to a sustainable green future. Our mission is simple yet profound: to revive our rich cultural ecological consciousness and restore our natural environment by bridging generations through the timeless art of native storytelling. We are not just conserving; we are re-activating the deep, indigenous knowledge that did sustain our community for centuries.
+        </p>
+        <a href="programs.html" class="btn">Our Programs</a>
+        <a href="stories.html" class="btn">Community Stories</a>
       </div>
     </div>
 
@@ -51,36 +60,38 @@
       <div id="nascec-video">
         <h2>NASCEC Video</h2>
         <div class="video-wrapper">
-          <video controls poster="IMAGES/video-poster.jpg">
+          <video controls autoplay muted playsinline poster="IMAGES/video-poster.jpg">
             <source src="IMAGES/nascec-video.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
         <p>See NASCEC in action: elders, youth, storytelling, and conservation work together to protect nature and culture.</p>
       </div>
-      </section>
+    </section>
 
-      <section class="partner-section">
+    <section class="partner-section">
+      <div class="partner-shell">
         <div class="partner-container">
           <div id="partner-with-us">
             <h2>Partner With Us</h2>
             <p>NASCEC is seeking partnerships with like-minded organizations, businesses, and individuals who share our vision of preserving cultural heritage and protecting the environment.</p>
             <h5 style="color:#316d2b;font-size:24px;">Why Partner With NASCEC?</h5>
             <ul style="list-style: none; padding-left: 0;">
-              <li style="margin-bottom: 12px;">✓ Direct impact on community and environmental conservation</li>
-              <li style="margin-bottom: 12px;">✓ Authentic connection with indigenous wisdom and practices</li>
-              <li style="margin-bottom: 12px;">✓ Support for intergenerational knowledge transfer</li>
-              <li style="margin-bottom: 12px;">✓ Build your brand around meaningful conservation efforts</li>
+             <ul>
+             <li style="margin-bottom: 12px;">✓ Direct impact on community and environmental conservation</li>
+             <li style="margin-bottom: 12px;">✓ Authentic connection with indigenous wisdom and practices</li>
+             <li style="margin-bottom: 12px;">✓ Support for intergenerational knowledge transfer</li>
+             <li style="margin-bottom: 12px;">✓ Build your brand around meaningful conservation efforts</li>
             </ul>
             <a href="contact.html" class="btn">Start a Partnership</a>
           </div>
           <div class="partnership-gallery" id="partnership-gallery">
-            <!-- Images loaded dynamically -->
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="get-involved">
+    <section class="get-involved">
       <div id="part-of-circle">
         <h2>Be Part of the Circle</h2>
         <p>
@@ -89,7 +100,6 @@
         <a href="contact.html" class="btn">Get Involved Today</a>
       </div>
     </section>
-
   </main>
 
   <footer>
@@ -100,21 +110,15 @@
     let partnershipImages = [];
     let currentImageIndex = 0;
 
-    // Load partnership gallery dynamically with slideshow
     async function loadPartnershipGallery() {
       try {
         const response = await fetch('/partnerships.json');
         const data = await response.json();
-        const gallery = document.getElementById('partnership-gallery');
-        
-        // Store all images
+
         partnershipImages = data.partnerships;
-        
+
         if (partnershipImages.length > 0) {
-          // Display first image
           displayImage(0);
-          
-          // Auto-rotate images every 4 seconds
           setInterval(rotateImage, 4000);
         }
       } catch (error) {
@@ -122,11 +126,10 @@
       }
     }
 
-    // Display a specific image
     function displayImage(index) {
       const gallery = document.getElementById('partnership-gallery');
       gallery.innerHTML = '';
-      
+
       if (partnershipImages[index]) {
         const img = document.createElement('img');
         img.src = partnershipImages[index].image;
@@ -136,15 +139,33 @@
       }
     }
 
-    // Rotate to next image
     function rotateImage() {
       currentImageIndex = (currentImageIndex + 1) % partnershipImages.length;
       displayImage(currentImageIndex);
     }
 
-    // Load gallery when page loads
-    document.addEventListener('DOMContentLoaded', loadPartnershipGallery);
+    document.addEventListener('DOMContentLoaded', () => {
+      loadPartnershipGallery();
+
+      const nascecVideo = document.querySelector('#nascec-video video');
+      const heroSlides = document.querySelectorAll('.hero-slide');
+      let activeHeroSlide = 0;
+
+      if (heroSlides.length > 1) {
+        setInterval(() => {
+          heroSlides[activeHeroSlide].classList.remove('active');
+          activeHeroSlide = (activeHeroSlide + 1) % heroSlides.length;
+          heroSlides[activeHeroSlide].classList.add('active');
+        }, 5000);
+      }
+
+      if (nascecVideo) {
+        nascecVideo.muted = true;
+        nascecVideo.play().catch(() => {
+          // Some browsers may still block autoplay until interaction.
+        });
+      }
+    });
   </script>
-  
-  </body>
-  </html>
+</body>
+</html>
