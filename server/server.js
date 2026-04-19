@@ -1,8 +1,11 @@
+require("dotenv").config();
+
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const cors = require("cors");
 const contactRouter = require('./routes/contact');
+const partnershipRouter = require('./routes/partnership'); 
 
 const app = express();
 
@@ -35,6 +38,12 @@ app.get("/api/gallery", (req, res) => {
   );
   res.json(gallery);
 });
+
+
+app.use('/api', partnershipRouter); 
+
+
+
 
 /* =========================
    START SERVER

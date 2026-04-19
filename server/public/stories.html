@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NASCEC | Stories</title>
   <link rel="stylesheet" href="CSS/style.css">
 </head>
-<body>
+<body class="immersive-page stories-page-shell">
+  <div class="site-video-bg" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="auto" poster="IMAGES/logo.jpeg">
+      <source src="IMAGES/nascec-logo-animation.mp4" type="video/mp4">
+      Your browser does not support video playback.
+    </video>
+  </div>
+
   <header>
     <div id="logo_container">
       <img src="IMAGES/logo.jpeg" alt="NASCEC Logo" class="logo">
@@ -22,15 +29,26 @@
     </nav>
   </header>
 
-  <section class="stories-page">
-    <div class="section-label">Latest Stories</div>
-    <div class="featured-story" id="featuredStory"></div>
-    <div class="section-label">Other Stories</div>
-    <div class="story-grid" id="storyGrid"></div>
-  </section>
+  <main class="page-shell">
+    <section class="page-hero glass-panel">
+      <p class="page-kicker">Stories</p>
+      <h2>Voices, memories, and moments from the community</h2>
+      <p>
+        Discover featured stories, field experiences, and community reflections that connect culture,
+        conservation, and hope.
+      </p>
+    </section>
+
+    <section class="stories-page glass-panel">
+      <div class="section-label">Latest Story</div>
+      <div class="featured-story" id="featuredStory"></div>
+      <div class="section-label">More Stories</div>
+      <div class="story-grid" id="storyGrid"></div>
+    </section>
+  </main>
 
   <footer>
-    © 2026 Native Storytelling for Culture and Environment Conservation (NASCEC)
+    &copy; 2026 Native Storytelling for Culture and Environment Conservation (NASCEC)
   </footer>
 
   <script src="stories.js"></script>
