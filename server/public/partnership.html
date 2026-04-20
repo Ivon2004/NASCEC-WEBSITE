@@ -89,6 +89,7 @@
           </div>
 
           <button type="submit" class="btn-submit">Send Proposal</button>
+          <p class="form-status" id="partnershipStatus" aria-live="polite"></p>
         </form>
       </div>
 
@@ -118,8 +119,21 @@
 
   <script>
     const partnershipImage = document.getElementById("partnership-visual-image");
+    const partnershipStatus = document.getElementById("partnershipStatus");
     let partnershipImages = [];
     let partnershipIndex = 0;
+    let partnershipStatusTimer;
+
+    function showPartnershipStatus(text, type) {
+      clearTimeout(partnershipStatusTimer);
+      partnershipStatus.textContent = text;
+      partnershipStatus.className = `form-status is-visible ${type}`;
+
+      partnershipStatusTimer = setTimeout(() => {
+        partnershipStatus.className = "form-status";
+        partnershipStatus.textContent = "";
+      }, 4000);
+    }
 
     async function loadPartnershipImages() {
       try {
@@ -154,7 +168,8 @@
     document.getElementById("partnershipForm").addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const submitButton = e.currentTarget.querySelector("button[type='submit']");
+      const form = e.currentTarget;
+      const submitButton = form.querySelector("button[type='submit']");
       const formData = {
         name: document.getElementById("name").value.trim(),
         organization: document.getElementById("org").value.trim(),
@@ -179,10 +194,10 @@
           throw new Error(result.message || "Something went wrong. Please try again.");
         }
 
-        alert(result.message || "Thank you! We will be in touch.");
-        e.currentTarget.reset();
+        showPartnershipStatus(result.message || "Thank you! We will be in touch.", "success");
+        form.reset();
       } catch (error) {
-        alert(error.message || "Something went wrong. Please try again.");
+        showPartnershipStatus(error.message || "Something went wrong. Please try again.", "error");
       } finally {
         submitButton.disabled = false;
         submitButton.textContent = "Send Proposal";
