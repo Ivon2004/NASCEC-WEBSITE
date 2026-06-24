@@ -32,7 +32,7 @@
     <div class="hero">
       <div class="hero-background" aria-hidden="true">
         <div class="hero-slide active" style="background-image: url('IMAGES/background.jpeg');"></div>
-        <div class="hero-slide" style="background-image: url('IMAGES/elders.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('IMAGES/musunji.jpeg');"></div>
         <div class="hero-slide" style="background-image: url('IMAGES/tree_planting.jpg');"></div>
         <div class="hero-slide" style="background-image: url('IMAGES/festival.jpg');"></div>
       </div>
@@ -54,13 +54,13 @@
         <p>
           Documenting and celebrating Luhya heritage through oral histories, songs, and proverbs.
         </p>
-        <h5 style="color:green;font-size:30px">Environmental Action</h5>
+        <h5 style="color:brown;font-size:30px">Environmental Action</h5>
         <p>
           Translating traditional ecological knowledge into tangible conservation projects.
         </p>
-        <h5 style="color:orange;font-size:30px">Intergenerational Bridge</h5>
+        <h5 style="color:brown;font-size:30px">Intergenerational Bridge</h5>
         <p>Creating spaces where elders and youth share, learn, and grow together.</p>
-        <h5 style="color:rgb(0, 204, 255);font-size:30px">Community Resilience</h5>
+        <h5 style="color:brown;font-size:30px">Community Resilience</h5>
         <p>Building a more sustainable and culturally vibrant Vihiga, one story and one tree at a time.</p>
       </div>
       <div id="nascec-video">
@@ -113,15 +113,22 @@
   </footer>
 
   <script>
+    const partnershipFallbackImages = [
+      { image: 'IMAGES/handshake1.jpg', alt: 'Partnership handshake' },
+      { image: 'IMAGES/handshake2.jpg', alt: 'Partnership collaboration' },
+      { image: 'IMAGES/handshake3.jpg', alt: 'Team partnership' },
+      { image: 'IMAGES/handshake4.jpg', alt: 'Business partnership' }
+    ];
+
     let partnershipImages = [];
     let currentImageIndex = 0;
 
     async function loadPartnershipGallery() {
       try {
-        const response = await fetch('/partnerships.json');
+        const response = await fetch('partnerships.json');
         const data = await response.json();
 
-        partnershipImages = data.partnerships;
+        partnershipImages = data.partnerships || partnershipFallbackImages;
 
         if (partnershipImages.length > 0) {
           displayImage(0);
@@ -129,6 +136,12 @@
         }
       } catch (error) {
         console.error('Error loading partnership gallery:', error);
+        partnershipImages = partnershipFallbackImages;
+
+        if (partnershipImages.length > 0) {
+          displayImage(0);
+          setInterval(rotateImage, 4000);
+        }
       }
     }
 

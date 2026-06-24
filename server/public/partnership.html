@@ -120,6 +120,12 @@
   <script>
     const partnershipImage = document.getElementById("partnership-visual-image");
     const partnershipStatus = document.getElementById("partnershipStatus");
+    const partnershipFallbackImages = [
+      { image: "IMAGES/handshake1.jpg", alt: "Partnership handshake" },
+      { image: "IMAGES/handshake2.jpg", alt: "Partnership collaboration" },
+      { image: "IMAGES/handshake3.jpg", alt: "Team partnership" },
+      { image: "IMAGES/handshake4.jpg", alt: "Business partnership" }
+    ];
     let partnershipImages = [];
     let partnershipIndex = 0;
     let partnershipStatusTimer;
@@ -137,9 +143,9 @@
 
     async function loadPartnershipImages() {
       try {
-        const response = await fetch("/partnerships.json");
+        const response = await fetch("partnerships.json");
         const data = await response.json();
-        partnershipImages = data.partnerships || [];
+        partnershipImages = data.partnerships || partnershipFallbackImages;
 
         if (partnershipImages.length > 0) {
           updatePartnershipImage(0);
@@ -152,6 +158,17 @@
         }
       } catch (error) {
         console.error("Unable to load partnership images:", error);
+        partnershipImages = partnershipFallbackImages;
+
+        if (partnershipImages.length > 0) {
+          updatePartnershipImage(0);
+          if (partnershipImages.length > 1) {
+            setInterval(() => {
+              partnershipIndex = (partnershipIndex + 1) % partnershipImages.length;
+              updatePartnershipImage(partnershipIndex);
+            }, 3500);
+          }
+        }
       }
     }
 

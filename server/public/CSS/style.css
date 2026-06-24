@@ -77,10 +77,10 @@ nav a:hover {
 
 .hero {
   position: relative;
-  overflow: hidden;
-  padding: 70px 40px;
+  overflow: visible;
+  padding: clamp(32px, 6vw, 70px) clamp(16px, 4vw, 40px);
   text-align: center;
-  min-height: 520px;
+  min-height: clamp(480px, 70vh, 620px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -90,6 +90,7 @@ nav a:hover {
   position: absolute;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
 }
 
 .hero-slide {
@@ -123,10 +124,10 @@ nav a:hover {
 #blurred{
     backdrop-filter: blur(8px);
     border-radius: 18px;
-    padding: 40px 28px 34px;
+  padding: clamp(24px, 4vw, 40px) clamp(16px, 3vw, 28px) clamp(26px, 4vw, 34px);
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.14));
     max-width: 920px;
-    width: 100%;
+  width: min(920px, calc(100vw - 32px));
 }
 .btn {
   display: inline-block;
@@ -147,19 +148,25 @@ nav a:hover {
 
 
 .hero h2 {
-  font-size: 32px;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.15;
   margin-bottom: 15px;
   color: rgb(248, 151, 5);
+  text-wrap: balance;
 }
 
 .hero p {
   max-width: 800px;
   margin: auto;
-  font-size: 18px;
+  font-size: clamp(15px, 1.7vw, 18px);
   color: #fcf9f9;
+  overflow-wrap: break-word;
 }
 .hero h4{
   color: rgb(247, 244, 244);
+  font-size: clamp(16px, 2.2vw, 22px);
+  line-height: 1.35;
+  text-wrap: balance;
 }
 
 .hero .btn {
@@ -170,7 +177,7 @@ nav a:hover {
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
-  font-size: 15px;
+  font-size: clamp(14px, 1.5vw, 15px);
   transition: background-color 0.3s ease,transform 0.25s ease;
 }
 
@@ -588,7 +595,7 @@ button {
 .gallery-description p {
   margin: 0;
   font-size: 14px;
-  color: #666;
+  color: #1d0404;
   line-height: 1.5;
 }
 #about-us {
@@ -707,8 +714,11 @@ button {
 }
 
 .team-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   padding: 22px 20px 26px;
-  text-align: center;
+  text-align: left;
 }
 
 .team-name {
@@ -725,6 +735,49 @@ button {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
+}
+
+.team-bio {
+  color: #444;
+  line-height: 1.7;
+  margin: 14px 0 0;
+}
+
+.team-connect {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.team-connect-title {
+  color: #1f3d24;
+  font-style: italic;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.team-profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.team-profile-links a {
+  background: rgba(49, 109, 43, 0.1);
+  border: 1px solid rgba(49, 109, 43, 0.18);
+  border-radius: 999px;
+  color: #24502a;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 9px 12px;
+  text-decoration: none;
+}
+
+.team-profile-links a:hover,
+.team-profile-links a:focus {
+  background: #316d2b;
+  color: #ffffff;
 }
 
 .what-we-do {
@@ -984,6 +1037,8 @@ footer {
   text-align: center;
   background-color: white;
   border-radius: 10px;
+  margin-bottom: 32px;
+  padding: 24px 20px 30px;
   
    
 }
@@ -1050,9 +1105,44 @@ footer {
   color: #316d2b;
 }
 
+.story-media {
+  margin: 20px 0;
+}
+
+.story-media img,
+.story-media video {
+  border-radius: 8px;
+  display: block;
+  max-height: 70vh;
+  object-fit: contain;
+  width: 100%;
+}
+
+.story-subheading {
+  color: #444;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
 .modal-content p {
   line-height: 1.8;
   color: #555;
+}
+
+.story-link {
+  margin: 8px 0 0;
+}
+
+.story-link a {
+  color: #316d2b;
+  font-weight: 600;
+}
+
+.story-link a:hover,
+.story-link a:focus {
+  text-decoration: underline;
 }
 
 section {
@@ -1107,21 +1197,23 @@ section {
   }
 
   .hero {
-    padding: 48px 20px;
+    min-height: auto;
+    padding: clamp(28px, 8vw, 48px) clamp(14px, 4vw, 20px);
   }
 
   #blurred {
-    padding: 20px 16px 24px;
+    width: min(100%, 920px);
+    padding: clamp(20px, 4vw, 24px) clamp(14px, 4vw, 16px) clamp(22px, 5vw, 24px);
   }
 
   .hero h2,
   .what-we-do h2,
   #partner-with-us h2 {
-    font-size: 28px;
+    font-size: clamp(22px, 4.5vw, 28px);
   }
 
   .hero h4 {
-    font-size: 18px;
+    font-size: clamp(15px, 3.2vw, 18px);
   }
 
   .hero p,
@@ -1129,7 +1221,7 @@ section {
   #part-of-circle p,
   #nascec-video p,
   #partner-with-us > p {
-    font-size: 16px;
+    font-size: clamp(15px, 2.8vw, 16px);
   }
 
   .hero .btn,
@@ -1279,11 +1371,11 @@ section {
   #about-us h2,
   .team-header h2,
   .contact-section h2 {
-    font-size: 24px;
+    font-size: clamp(21px, 6vw, 24px);
   }
 
   .hero h4 {
-    font-size: 16px;
+    font-size: clamp(14px, 4.4vw, 16px);
   }
 
   .hero p,
@@ -1291,7 +1383,7 @@ section {
   #partner-with-us > p,
   #part-of-circle p,
   .modal-content p {
-    font-size: 15px;
+    font-size: clamp(14px, 4vw, 15px);
   }
 
   .what-we-do > div,
@@ -1306,6 +1398,7 @@ section {
   .partner-shell {
     margin-left: 12px;
     margin-right: 12px;
+    margin-bottom: 24px;
   }
 
   .partner-section,
@@ -1314,6 +1407,11 @@ section {
   .what-we-do {
     padding-left: 12px;
     padding-right: 12px;
+  }
+
+  #part-of-circle {
+    margin-bottom: 28px;
+    padding: 22px 16px 26px;
   }
 
   .partnership-gallery {
@@ -1451,12 +1549,12 @@ section {
   margin-bottom: 14px;
   font-size: clamp(2rem, 4vw, 3.6rem);
   line-height: 1.05;
-  color: #24502a;
+  color:#b87420;
 }
 
 .page-hero p {
   max-width: 760px;
-  color: #4b5f4f;
+  color: #000802;
   font-size: 1.02rem;
   line-height: 1.7;
 }
@@ -1478,7 +1576,7 @@ section {
   display: none;
   padding: 0;
   border-radius: 22px;
-  background: linear-gradient(145deg, rgba(245, 251, 244, 0.96) 0%, rgba(233, 243, 231, 0.98) 100%);
+  background: linear-gradient(145deg, rgba(8, 39, 2, 0.96) 0%, rgba(233, 243, 231, 0.98) 100%);
   border: 1px solid rgba(49, 109, 43, 0.12);
   overflow: hidden;
 }
@@ -1506,7 +1604,7 @@ section {
 .partnership-page h2,
 .contact-connect-panel h4,
 .story-card h3 {
-  color: #24502a;
+  color: #000e02;
 }
 
 .program p,
@@ -1515,7 +1613,7 @@ section {
 .contact-side-copy,
 .partnership-lead,
 .story-card p {
-  color: #4d6250;
+  color: #f4f7f5;
 }
 
 .program-image,
@@ -1523,12 +1621,12 @@ section {
 .story-card img,
 .gallery-item img {
   border-radius: 20px;
-  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 18px 35px rgba(247, 2, 2, 0.24);
 }
 
 .nav-btn {
   border: 1px solid rgba(49, 109, 43, 0.22);
-  background: rgba(49, 109, 43, 0.92);
+  background: rgba(16, 87, 1, 0.92);
   color: #fffaf0;
 }
 
@@ -1545,6 +1643,20 @@ section {
 .stories-page {
   max-width: none;
   margin: 0;
+}
+
+.featured-text h2,
+.story-card h3 {
+  color: #17311f;
+}
+
+.featured-text p,
+.story-card p {
+  color: #243b2a;
+}
+
+.featured-text p {
+  white-space: pre-line;
 }
 
 .featured-story {
@@ -1644,7 +1756,7 @@ section {
 .contact-ornaments .circle-10 {
   border-color: rgba(49, 109, 43, 0.45);
 }
-}
+
 
 .contact-form {
   max-width: none;
