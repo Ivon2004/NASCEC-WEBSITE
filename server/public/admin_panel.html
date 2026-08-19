@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel | NASCEC</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      background: #f0f4f0;
+      padding: 2rem;
+    }
+
+    /* ===== ADMIN CONTAINER ===== */
+    .admin-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2.5rem 3rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(15, 59, 44, 0.08);
+      animation: slideUp 0.6s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== HEADER ===== */
+    .admin-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 2px solid #e8f0e8;
+    }
+
+    .admin-header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .admin-header .icon-wrapper {
+      width: 52px;
+      height: 52px;
+      background: rgba(16, 87, 1, 0.92);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px;
+    }
+
+    .admin-header .icon-wrapper i {
+      font-size: 1.4rem;
+      color: rgba(16, 87, 1, 0.92);
+    }
+
+    .admin-header h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0f3b2c;
+      margin: 0;
+    }
+
+    .admin-header h2 span {
+      color: rgba(16, 87, 1, 0.92);
+    }
+
+    .admin-header .logout-btn {
+      background: #dc2626;
+      color: #fff;
+      border: none;
+      border-radius: 40px;
+      padding: 0.6rem 1.4rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+    }
+
+    .admin-header .logout-btn:hover {
+      background: #b91c1c;
+      transform: scale(1.04);
+    }
+
+    .admin-header .logout-btn i {
+      font-size: 0.85rem;
+    }
+
+    .admin-subtitle {
+      color: #64748b;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      padding-left: 66px;
+    }
+
+    /* ===== FORM SECTIONS ===== */
+    .form-section {
+      background: #f8faf8;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #e2e8e0;
+    }
+
+    .form-section h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #0f3b2c;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-section h3 i {
+      color: #2d7a5e;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-row .full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-group {
+      margin-bottom: 0;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.3px;
+    }
+
+    .form-group label i {
+      color: rgba(16, 87, 1, 0.92);
+      margin-right: 6px;
+      width: 16px;
+    }
+
+    .form-group .input-wrapper {
+      position: relative;
+    }
+
+    .form-group .input-wrapper i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      font-size: 0.85rem;
+      transition: 0.3s;
+      z-index: 2;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.7rem 1rem 0.7rem 2.5rem;
+      border: 2px solid #e2e8e0;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      color: #1e293b;
+      background: #ffffff;
+      transition: 0.3s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #2d7a5e;
+      box-shadow: 0 0 0 4px rgba(45, 122, 94, 0.1);
+    }
+
+    .form-group input::placeholder {
+      color: #94a3b8;
+    }
+
+    .form-group select {
+      appearance: none;
+      cursor: pointer;
+      padding-right: 2.5rem;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394a3b8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+    }
+
+    .form-group select:focus {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232d7a5e' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn-submit {
+      padding: 0.7rem 1.8rem;
+      background: rgba(16, 87, 1, 0.92);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(15, 59, 44, 0.2);
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(15, 59, 44, 0.3);
+      background: orange;
+    }
+
+    .btn-submit i {
+      color: #7ed957;
+      font-size: 0.85rem;
+    }
+
+    .btn-delete {
+      padding: 0.7rem 1.8rem;
+      background: #dc2626;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-delete:hover {
+      background: #b91c1c;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(220, 38, 38, 0.3);
+    }
+
+    .btn-delete i {
+      color: #fca5a5;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* ===== TABLE ===== */
+    .table-section {
+      margin-top: 2rem;
+    }
+
+    .table-section h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #0f3b2c;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .table-section h3 i {
+      color: #2d7a5e;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid #e2e8e0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    th {
+      background: #f1f5f1;
+      color: #0f3b2c;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.5px;
+      padding: 0.8rem 1rem;
+      text-align: left;
+      border-bottom: 2px solid #e2e8e0;
+    }
+
+    td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid #e8f0e8;
+      color: #1e293b;
+    }
+
+    tr:hover td {
+      background: #f8faf8;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .status-badge.active {
+      background: rgba(16, 87, 1, 0.92);
+      color: #ffffff;
+    }
+
+    .status-badge.inactive {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .status-badge.pending {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .role-badge {
+      display: inline-block;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .role-badge.admin {
+      background: #e0e7ff;
+      color: #3730a3;
+    }
+
+    .role-badge.user {
+      background: #e2e8f0;
+      color: #475569;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+
+      .admin-container {
+        padding: 1.5rem;
+        border-radius: 20px;
+      }
+
+      .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .admin-header-left {
+        width: 100%;
+      }
+
+      .admin-header .logout-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .admin-subtitle {
+        padding-left: 0;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+
+      .form-actions {
+        flex-direction: column;
+      }
+
+      .btn-submit,
+      .btn-delete {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .admin-header h2 {
+        font-size: 1.2rem;
+      }
+
+      .admin-header .icon-wrapper {
+        width: 44px;
+        height: 44px;
+      }
+
+      .admin-header .icon-wrapper i {
+        font-size: 1.2rem;
+      }
+
+      .form-section {
+        padding: 1rem;
+      }
+
+      table {
+        font-size: 0.75rem;
+      }
+
+      th,
+      td {
+        padding: 0.5rem 0.6rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .admin-container {
+        padding: 1rem;
+        border-radius: 16px;
+      }
+
+      .admin-header h2 {
+        font-size: 1rem;
+      }
+
+      .form-group input,
+      .form-group select {
+        padding: 0.6rem 0.8rem 0.6rem 2.2rem;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <!-- ===== HEADER ===== -->
+    <div class="admin-header">
+      <div class="admin-header-left">
+        <div class="icon-wrapper">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h2>Admin <span>Panel</span></h2>
+      </div>
+      <button class="logout-btn" id="logoutBtn">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+
+    <p class="admin-subtitle">
+      <i class="fas fa-users-cog" style="color:#2d7a5e; margin-right:8px;"></i>
+      Manage users and view current accounts from here.
+    </p>
+
+    <!-- ===== CREATE USER ===== -->
+    <div class="form-section">
+      <h3><i class="fas fa-user-plus"></i> Create New User</h3>
+      <form action="/admin/create-user" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="username"><i class="fas fa-user"></i> Username</label>
+            <div class="input-wrapper">
+              <i class="fas fa-user-circle"></i>
+              <input type="text" id="username" name="username" placeholder="Enter username" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password"><i class="fas fa-lock"></i> Password</label>
+            <div class="input-wrapper">
+              <i class="fas fa-key"></i>
+              <input type="password" id="password" name="password" placeholder="Enter password" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="role"><i class="fas fa-user-tag"></i> Role</label>
+            <div class="input-wrapper">
+              <i class="fas fa-tag"></i>
+              <select name="role" id="role">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group" style="display:flex; align-items:flex-end;">
+            <button type="submit" class="btn-submit">
+              <i class="fas fa-plus-circle"></i> Create User
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- ===== DELETE USER ===== -->
+    <div class="form-section" style="border-color: #fecaca;">
+      <h3 style="color:#dc2626;"><i class="fas fa-user-minus"></i> Delete User</h3>
+      <form action="/admin/delete-user" method="POST">
+        <div class="form-row">
+          <div class="form-group" style="flex:1;">
+            <label for="deleteUsername"><i class="fas fa-user"></i> Username to Delete</label>
+            <div class="input-wrapper">
+              <i class="fas fa-user-slash"></i>
+              <input type="text" id="deleteUsername" name="username" placeholder="Enter username to delete" required>
+            </div>
+          </div>
+          <div class="form-group" style="display:flex; align-items:flex-end;">
+            <button type="submit" class="btn-delete">
+              <i class="fas fa-trash-alt"></i> Delete User
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- ===== USERS TABLE ===== -->
+    <div class="table-section">
+      <h3><i class="fas fa-users"></i> Existing Users</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Created At</th>
+            </tr>
+          </thead>
+          <tbody id="usersTbody">
+            <!-- Users loaded dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const usersTbody = document.getElementById('usersTbody');
+
+    // ===== LOAD USERS =====
+    async function loadUsers() {
+      usersTbody.innerHTML = '';
+      try {
+        const res = await fetch('/admin/users', { method: 'GET', credentials: 'include' });
+        if (!res.ok) throw new Error('Failed to load users');
+        const users = await res.json();
+
+        if (users.length === 0) {
+          usersTbody.innerHTML = `
+            <tr>
+              <td colspan="5" style="text-align:center; color:#94a3b8; padding:2rem;">
+                <i class="fas fa-inbox" style="display:block; font-size:1.5rem; margin-bottom:0.5rem;"></i>
+                No users found
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        for (const u of users) {
+          const tr = document.createElement('tr');
+          
+          const statusClass = u.status === 'active' ? 'active' : u.status === 'pending' ? 'pending' : 'inactive';
+          const roleClass = u.role === 'admin' ? 'admin' : 'user';
+
+          tr.innerHTML = `
+            <td><strong>${u.id ?? '-'}</strong></td>
+            <td>${u.username ?? '-'}</td>
+            <td><span class="role-badge ${roleClass}">${u.role ?? 'user'}</span></td>
+            <td><span class="status-badge ${statusClass}">${u.status ?? 'active'}</span></td>
+            <td>${u.created_at ? new Date(u.created_at).toLocaleDateString() : '-'}</td>
+          `;
+          usersTbody.appendChild(tr);
+        }
+      } catch (err) {
+        console.error(err);
+        usersTbody.innerHTML = `
+          <tr>
+            <td colspan="5" style="text-align:center; color:#dc2626; padding:2rem;">
+              <i class="fas fa-exclamation-triangle" style="display:block; font-size:1.5rem; margin-bottom:0.5rem;"></i>
+              Failed to load users
+            </td>
+          </tr>
+        `;
+      }
+    }
+
+    loadUsers();
+
+    // ===== LOGOUT =====
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', async () => {
+        try {
+          const res = await fetch('/logout', { method: 'POST', credentials: 'include' });
+          if (res.ok) {
+            window.location.href = '/';
+          } else {
+            alert('Logout failed');
+          }
+        } catch (err) {
+          console.error('Logout error', err);
+          alert('Logout failed');
+        }
+      });
+    }
+
+    // ===== AUTO-RELOAD TABLE AFTER FORM SUBMISSION =====
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', function() {
+        setTimeout(loadUsers, 500);
+      });
+    });
+  </script>
+  <script src="js/loginModal.js"></script>
+</body>
+</html>

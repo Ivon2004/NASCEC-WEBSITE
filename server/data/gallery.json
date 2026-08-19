@@ -1,26 +1,168 @@
 [
   {
     "id": 1,
-    "title": "Community Gathering",
-    "description": "Elders sharing stories and cultural traditions with community members.",
-    "image": "/IMAGES/photo1.jpeg"
+    "title": "Youth Engagement and Team Building",
+    "description": "A section of the youths engage in outdoor games as a platform for team bonding and physical development.",
+    "image": "IMAGES/A section of the youths engage in outdoor games as a platform for team bonding and physical development.jpg",
+    "imageDescription": "Youth participants enjoying outdoor activities that promote teamwork and physical fitness.",
+    "photographer": {
+      "name": "NASCEC Photography",
+      "website": "https://nascec.org"
+    },
+    "date": "2026-07-15",
+    "startDate": "2026-07-13",
+    "endDate": "2026-07-15",
+    "event": "Youth Retreat",
+    "location": "Tiriki Forest Resort",
+    "category": "events",
+    "photos": 2,
+    "videos": 1,
+    "fullDescription": "A section of the youths engage in outdoor games as a platform for team bonding and physical development. This activity is part of NASCEC's youth engagement programme aimed at fostering teamwork, leadership, and physical fitness among young people in the community.",
+    "galleryImages": [
+      { "src": "IMAGES/A section of the youths engage in outdoor games as a platform for team bonding and physical development.jpg", "caption": "Youths playing outdoor games" }
+    ],
+    "galleryVideos": [
+      { "src": "VIDEOS/nascec-video.mp4", "caption": "Youth games highlights" }
+    ]
   },
   {
     "id": 2,
-    "title": "Environmental Conservation",
-    "description": "Team working on sustainable practices informed by indigenous knowledge.",
-    "image": "/IMAGES/photo2.jpg"
+    "title": "Environmental Storytelling and Filmmaking",
+    "description": "Advancing NASCEC's environmental mission through storytelling and filmmaking.",
+    "image": "IMAGES/Advancing NASCEC's environmental mission through storytelling and filmmaking.jpg",
+    "imageDescription": "A group of young filmmakers capturing environmental stories in the field.",
+    "photographer": {
+      "name": "NASCEC Photography",
+      "website": "https://nascec.org"
+    },
+    "date": "2026-07-20",
+    "startDate": "2026-07-18",
+    "endDate": "2026-07-20",
+    "event": "Filmmaking Workshop",
+    "location": "Nairobi Film Hub",
+    "category": "record",
+    "photos": 10,
+    "videos": 3,
+    "fullDescription": "Advancing NASCEC's environmental mission through storytelling and filmmaking. Young filmmakers learned how to capture environmental stories, edit videos, and use visual media to raise awareness about conservation issues.",
+    "galleryImages": [
+      { "src": "IMAGES/Advancing NASCEC's environmental mission through storytelling and filmmaking.jpg", "caption": "Filmmaking workshop in progress" },
+      { "src": "IMAGES/filmmaking_2.jpg", "caption": "Participants with cameras" },
+      { "src": "IMAGES/filmmaking_3.jpg", "caption": "Editing session" }
+    ],
+    "galleryVideos": [
+      { "src": "VIDEOS/filmmaking_workshop.mp4", "caption": "Workshop highlights" }
+    ]
   },
   {
     "id": 3,
-    "title": "Cultural Heritage Workshop",
-    "description": "Youth learning traditional practices and language preservation.",
-    "image": "/IMAGES/photo3.jpg"
+    "title": "Tree Planting and Community Engagement",
+    "description": "Chair NASCEC helps a pupil plant a tree during a tree planting event at the school.",
+    "image": "IMAGES/Chair NASCEC helps a pupil plant a tree during a tree planting event at the school.jpg",
+    "imageDescription": "Chair NASCEC assisting a pupil with tree planting.",
+    "photographer": {
+      "name": "NASCEC Photography",
+      "website": "https://nascec.org"
+    },
+    "date": "2026-06-12",
+    "startDate": "2026-06-10",
+    "endDate": "2026-06-12",
+    "event": "Tree Planting Drive",
+    "location": "Musunji Comprehensive School",
+    "category": "events",
+    "photos": 15,
+    "videos": 2,
+    "fullDescription": "Chair NASCEC helps a pupil plant a tree during a tree planting event at the school. The event brought together students, teachers, and community members to plant over 200 indigenous trees as part of the school's environmental conservation programme.",
+    "galleryImages": [
+      { "src": "IMAGES/Chair NASCEC helps a pupil plant a tree during a tree planting event at the school.jpg", "caption": "Chair NASCEC and pupil planting" },
+      { "src": "IMAGES/tree_planting_2.jpg", "caption": "Students planting trees" },
+      { "src": "IMAGES/tree_planting_3.jpg", "caption": "Group photo after planting" }
+    ],
+    "galleryVideos": [
+      { "src": "VIDEOS/tree_planting.mp4", "caption": "Tree planting ceremony" }
+    ]
   },
   {
     "id": 4,
-    "title": "Nature Protection Initiative",
-    "description": "Collaborative efforts to protect local ecosystems and biodiversity.",
-    "image": "/IMAGES/photo4.jpg"
+    "title": "Storytelling and Cultural Preservation",
+    "description": "Preserving indigenous knowledge through oral storytelling and community engagement.",
+    "image": "IMAGES/storytelling_kids.jpg",
+    "imageDescription": "Children gathered under a tree listening to elders tell stories of the forest.",
+    "photographer": {
+      "name": "NASCEC Photography",
+      "website": "https://nascec.org"
+    },
+    "date": "2026-06-05",
+    "startDate": "2026-06-03",
+    "endDate": "2026-06-05",
+    "event": "Storytelling and Cultural Preservation Workshop",
+    "location": "Musunji Comprehensive School",
+    "category": "events",
+    "photos": 8,
+    "videos": 1,
+    "fullDescription": "Storytelling is at the heart of NASCEC's mission to preserve indigenous knowledge and cultural heritage. This workshop brought together elders and children from the community to share stories about the forest, its significance, and the wisdom embedded in local folklore. The children learned about the importance of protecting sacred groves, the medicinal value of native trees, and the role of storytelling in passing down environmental stewardship from one generation to the next. Through interactive sessions, the children were encouraged to retell the stories in their own words, ensuring that the oral traditions remain alive and relevant. This initiative strengthens the bond between generations and reinforces the community's commitment to conservation.",
+    "galleryImages": [
+      { "src": "IMAGES/storytelling_kids_1.jpg", "caption": "Children listening to elders tell stories" },
+      { "src": "IMAGES/storytelling_kids_2.jpg", "caption": "Elder sharing wisdom about the forest" },
+      { "src": "IMAGES/storytelling_kids_3.jpg", "caption": "Children participating in storytelling session" }
+    ],
+    "galleryVideos": [
+      { "src": "VIDEOS/storytelling_session.mp4", "caption": "Storytelling session highlights" }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Filmmaking",
+    "description": "Working On: The Forest Guides Their Hands Documentary",
+    "image": "IMAGES/Sampling wild fruits from the forest.jpg",
+    "imageDescription": "An Image Of Wild Cardamom",
+    "photographer": {
+      "name": "NASCEC Photography",
+      "website": "https://nascec.org"
+    },
+    "date": "2026-04-10",
+    "startDate": "2026-04-08",
+    "endDate": "2026-04-10",
+    "event": "Forest Education Tour",
+    "location": "Musunji Forest Reserve",
+    "category": "folders",
+    "photos": 6,
+    "videos": 0,
+    "fullDescription": "A group of young people sampling wild fruits in the forest. The activity was part of a forest education tour where participants learned about indigenous fruits, their nutritional value, and their role in local food systems.",
+    "galleryImages": [
+      { "src": "IMAGES/Sampling wild fruits from the forest.jpg", "caption": "Youth sampling wild fruits" },
+      { "src": "IMAGES/wild_fruits_2.jpg", "caption": "Learning about indigenous fruits" },
+      { "src": "IMAGES/wild_fruits_3.jpg", "caption": "Forest exploration" }
+    ],
+    "galleryVideos": []
+  },
+  {
+    "id": 6,
+    "title": "Tree Follow-up: Weeding and Tending at Musunji",
+    "description": "Ensuring the survival and growth of trees through consistent care and maintenance.",
+    "image": "IMAGES/tree_followup_weeding.jpg",
+    "imageDescription": "Community members and students weeding around young trees at Musunji Comprehensive School.",
+    "photographer": {
+      "name": "NASCEC Photography",
+      "website": "https://nascec.org"
+    },
+    "date": "2026-07-25",
+    "startDate": "2026-07-23",
+    "endDate": "2026-07-25",
+    "event": "Tree Maintenance and Follow-up Exercise",
+    "location": "Musunji Comprehensive School",
+    "category": "events",
+    "photos": 10,
+    "videos": 2,
+    "fullDescription": "Tree planting is only the beginning of the journey. To ensure the survival and healthy growth of the trees planted at Musunji Comprehensive School, NASCEC organized a follow-up exercise focused on weeding and tending. Community members, students, and NASCEC field officers came together to clear invasive weeds, apply mulch, and check the health of the young trees. This activity is part of NASCEC's commitment to long-term environmental stewardship. By caring for the trees, participants learn about the importance of consistent maintenance, the role of weeding in reducing competition for nutrients and water, and the value of patience in ecological restoration. The exercise also provided an opportunity for the school community to reflect on the progress made since the initial planting and to celebrate the growing green space on their compound.",
+    "galleryImages": [
+      { "src": "IMAGES/tree_followup_1.jpg", "caption": "Students weeding around young trees" },
+      { "src": "IMAGES/tree_followup_2.jpg", "caption": "Community members tending to the trees" },
+      { "src": "IMAGES/tree_followup_3.jpg", "caption": "NASCEC field officer checking tree health" },
+      { "src": "IMAGES/tree_followup_4.jpg", "caption": "Applying mulch around tree base" },
+      { "src": "IMAGES/tree_followup_5.jpg", "caption": "Group photo after the maintenance exercise" }
+    ],
+    "galleryVideos": [
+      { "src": "VIDEOS/tree_followup.mp4", "caption": "Tree maintenance exercise highlights" }
+    ]
   }
 ]

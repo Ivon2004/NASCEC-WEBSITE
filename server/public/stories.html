@@ -4,15 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NASCEC | Stories</title>
-  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body class="immersive-page stories-page-shell">
-  <div class="site-video-bg" aria-hidden="true">
-    <video autoplay muted loop playsinline preload="auto" poster="IMAGES/logo.jpeg">
-      <source src="IMAGES/nascec-logo-animation.mp4" type="video/mp4">
-      Your browser does not support video playback.
-    </video>
-  </div>
+
 
   <header>
     <div id="logo_container">
@@ -25,6 +21,8 @@
       <a href="programs.html">Programs</a>
       <a href="stories.html">Stories</a>
       <a href="gallery.html">Gallery</a>
+      <a href="#" class="nav-cta open-login">Field Data</a>
+      
       <a href="contact.html">Contact Us</a>
     </nav>
   </header>
@@ -40,17 +38,41 @@
     </section>
 
     <section class="stories-page glass-panel">
-      <div class="section-label">Latest Story</div>
+      <div class="section-label">Latest Stories</div>
+      <div id="latestStoriesCarousel" class="stories-carousel"></div>
+    </section>  
+    <section>
+      <div class="section-label">Top story</div>
       <div class="featured-story" id="featuredStory"></div>
       <div class="section-label">More Stories</div>
       <div class="story-grid" id="storyGrid"></div>
     </section>
   </main>
 
-  <footer>
-    &copy; 2026 Native Storytelling for Culture and Environment Conservation (NASCEC)
-  </footer>
+ <!-- ===== FOOTER ===== -->
+<footer>
+  <div style="max-width:1200px; margin:0 auto; padding:2rem 1.5rem; text-align:center;">
+    <div style="display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; margin-bottom:1rem;">
+      <a href="https://www.youtube.com/channel/UCRepZ9ndd3mmdIUkpGHRqGQ" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
+        <i class="fab fa-youtube" style="color:#ff0000;"></i> YouTube
+      </a>
+      <a href="https://www.linkedin.com/in/nascec-cbo-b0a99a428/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
+        <i class="fab fa-linkedin-in" style="color:#0a66c2;"></i> LinkedIn
+      </a>
+      <a href="mailto:contact.us@nascec.org" style="color:#fff; text-decoration:none; font-size:0.9rem;">
+        <i class="fas fa-envelope" style="color:#ea4335;"></i> Email
+      </a>
+      <a href="https://wa.me/254700000000?text=Hello%20NASCEC" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
+        <i class="fab fa-whatsapp" style="color:#25d366;"></i> WhatsApp
+      </a>
+    </div>
+    <p style="color:rgba(255,255,255,0.6); font-size:0.8rem; margin:0;">
+      &copy; 2026 Native Storytelling for Culture and Environment Conservation (NASCEC)
+    </p>
+  </div>
+</footer>
 
   <script src="stories.js"></script>
+  <script src="js/loginModal.js"></script>
 </body>
 </html>

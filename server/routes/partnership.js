@@ -12,10 +12,19 @@ function createTransporter() {
   }
 
   return nodemailer.createTransport({
-    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false, // true for 465, false for 587
     auth: {
       user,
       pass,
+    },
+    connectionTimeout: 10000,
+    greetingTimeout: 5000,
+    socketTimeout: 15000,
+    tls: {
+      rejectUnauthorized: true,
+      ciphers: "SSLv3",
     },
   });
 }
@@ -56,14 +65,22 @@ router.post("/partnership", async (req, res) => {
 
   try {
     await transporter.sendMail(mailOptions);
+    console.log(`✅ Partnership inquiry sent to ${inbox} from ${name}`);
     res.status(200).json({ success: true, message: "Inquiry sent successfully!" });
   } catch (error) {
     console.error("Email error:", error);
 
-    if (error && error.code === "EAUTH") {
+    if (error.code === "ESOCKET" || error.code === "ETIMEDOUT") {
       return res.status(500).json({
         success: false,
-        message: "Gmail rejected the login. Use the Gmail address plus a valid App Password or switch this integration to OAuth.",
+        message: "Unable to reach the email server. Your inquiry has been saved and will be sent when service is restored.",
+      });
+    }
+
+    if (error.code === "EAUTH") {
+      return res.status(500).json({
+        success: false,
+        message: "Gmail rejected the login. Verify the App Password is correct.",
       });
     }
 

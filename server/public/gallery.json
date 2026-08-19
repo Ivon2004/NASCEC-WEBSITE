@@ -1,0 +1,225 @@
+[
+  {
+    "id": "folder_all",
+    "title": "All Gallery Items",
+    "category": "folders",
+    "parentEvent": "Folders",
+    "description": "All photos and videos from NASCEC activities.",
+    "date": "2026-07-15",
+    "galleryImages": [],
+    "galleryVideos": []
+  },
+  {
+    "id": "folder_recent",
+    "title": "Recent",
+    "category": "folders",
+    "parentEvent": "Folders",
+    "description": "Recent photos and videos from NASCEC activities in the last 30 days.",
+    "date": "2026-07-15",
+    "galleryImages": [],
+    "galleryVideos": []
+  },
+  {
+    "id": "folder_archived",
+    "title": "Archived",
+    "category": "folders",
+    "parentEvent": "Folders",
+    "description": "Older photos and videos from past NASCEC activities.",
+    "date": "2026-02-14",
+    "galleryImages": [],
+    "galleryVideos": []
+  },
+  {
+    "id": "event_filmmaking",
+    "title": "Filmmaking",
+    "description": "Advancing NASCEC's environmental mission through storytelling and filmmaking.",
+    "category": "events",
+    "parentEvent": "Filmmaking",
+    
+    "subEvents": [
+      {
+        "id": "sub_film_1",
+        "title": "Filming The Forest Guides Their Hands Documetary",
+        "location": "Tiriki Forest",
+        "date": "2026-07-18",
+        "description": "Young filmmakers learned how to capture environmental stories, edit videos, and use visual media to raise awareness about conservation issues.",
+        "photographer": {
+      "name": "Tony Osome",
+      "website": "https://nascec.org"
+    },
+        "photos": 4,
+        "videos": 0,
+        "galleryImages": [
+          {"src": "IMAGES/Advancing NASCEC's environmental mission through storytelling and filmmaking.jpg", "caption": "Filmmaking workshop in progress" },
+          {"src":"IMAGES/Filmaking2.jpg","caption":"Mwanisa learning To use Black Magic"},
+          { "src": "IMAGES/Sampling wild fruits from the forest.jpg", "caption": "Youth sampling wild fruits" },
+          {"src":"IMAGES/Documentary filmaking.jpg","caption":"Nascec crew working on the film"}
+    
+        ],
+        "galleryVideos": []
+      },
+      {
+        "id": "sub_film_1",
+        "title": "Filming A private Event",
+        "location": "Cheptulu",
+        "date": "2026-07-10",
+        "description": "Nascec's Team member filming a a Private Event.",
+        "photographer": {
+      "name": "Austine",
+      "website": "https://nascec.org"
+    },
+        "photos": 1,
+        "videos": 0,
+        "galleryImages": [
+         
+          {"src":"IMAGES/Austine Filming.jpg","caption":"Nascec's Team Member Filming a Private Event"}
+    
+        ],
+        "galleryVideos": []
+      },
+      {
+        "id": "sub_film_2",
+        "title": "Research In Tiriki Forests Forest",
+        "location": "Tiriki East",
+        "date": "2026-01-20",
+        "description": "Nascec Team working on the research on the Origin of Kibiri Forest at Siekuti.",
+        "photos": 2,
+        "videos": 0,
+        "galleryImages": [
+          {"src":"IMAGES/Filming 2.JPG","caption":"Co-director and Cinematographer"},
+          {"src":"IMAGES/Filming General2.JPG","caption":"Fiming an INterview about Kibiri Forest"},
+          {"src":"IMAGES/Filming General.JPG","caption":"Fiming an INterview about Kibiri Forest"},
+          {"src":"IMAGES/A section of youths learning from an elder, trasgenerational local environmental knowledge transfer is at our core.jpg"}
+        ],
+        "galleryVideos": []
+      },
+     {
+        "id": "sub_film_3",
+        "title": "Community Learning Filmaking Basics",
+        "location": "Tiriki Forest Resort",
+        "date": "2025-11-10",
+        "description": "Nascec Team learning the Basics In Filmaking.",
+        "photos": 2,
+        "videos": 0,
+        "galleryImages": [
+          {"src":"IMAGES/learning Filmaking basiks.jpg","caption":"Team learing Fimaking basics"},
+          {"src":"IMAGES/CardId.jpg","caption":"Demonstration of Filmaking"}
+        ],
+        "galleryVideos": []
+      }
+    ]
+  },
+  {
+    "id": "event_treeplanting",
+    "title": "Tree Planting",
+    "description": "NASCEC's tree planting initiatives across different areas fulfilling their role in conservation.",
+    "category": "events",
+    "parentEvent": "Tree Planting",
+    "photographer": {
+      "name": "NASCEC Media Team",
+      "website": "https://nascec.org"
+    },
+    "subEvents": [
+      {
+        "id": "sub_tree_1",
+        "title": "Musunji School Tree Planting Drive",
+        "location": "Musunji Comprehensive School",
+        "date": "2026-05-18",
+        "description": "Chair NASCEC and Patron NASCEC planting trees with students at Musunji Comprehensive School during the first tree planting exercise. The event brought together students, teachers, and community members to plant over 200 indigenous trees.",
+        "photos": 2,
+        "videos": 0,
+        "galleryImages": [
+          { "src": "IMAGES/Chair NASCEC helps a pupil plant a tree during a tree planting event at the school.jpg", "caption": "Chair NASCEC planting with pupil" },
+          { "src": "IMAGES/Patron Planting a Tree.jpg", "caption": "Patron NASCEC planting with student" },
+          {"src":"IMAGES/tree planting4.jpg"},
+          {"src":"IMAGES/Tree Planting.jpg"},
+          {"src":"IMAGES/tree planting 3.jpg"},
+          {"src":"IMAGES/youth.jpg"}
+
+        ],
+        "galleryVideos": []
+      },
+      {
+        "id": "sub_tree_2",
+        "title": "Follow-up: Weeding and Tending at Musunji",
+        "location": "Musunji Comprehensive School",
+        "date": "2026-07-25",
+        "description": "Community members and students came together to weed around young trees, apply mulch, and check the health of the trees planted during the first tree planting exercise.",
+        "photos": 4,
+        "videos": 0,
+        "galleryImages": [
+          { "src": "IMAGES/Follow up 1.jpg", "caption": "Students weeding around young trees" },
+          { "src": "IMAGES/Follow up2.jpg", "caption": "Community members tending to trees" },
+          { "src": "IMAGES/Follow up3.jpg", "caption": "Applying mulch around tree base" },
+          { "src": "IMAGES/Follow up 4.jpg", "caption": "Checking the health of young trees" }
+        ],
+        "galleryVideos": []
+      }
+    ]
+  },
+  {
+    "id": "event_storytelling",
+    "title": " Cultural and Environmental Storytelling through Film and Media",
+    "description": "Preserving indigenous knowledge through oral storytelling and community engagement.",
+    "category": "events",
+    "parentEvent": "Native Storytelling",
+    "photographer": {
+      "name": "NASCEC Media Team",
+      "website": "https://nascec.org"
+    },
+    "subEvents": [
+      {
+        "id": "sub_story_1",
+        "title": "Storytelling Session with Elders",
+        "location": "Tiriki Forest Resort",
+        "date": "2025-11-20",
+        "description": "Children gathered to listen to elders tell stories about the forest, its significance, and the wisdom embedded in local folklore.",
+        "photos": 3,
+        "videos": 1,
+        "galleryImages": [
+          { "src": "IMAGES/Storytelling.jpg", "caption": "Children listening to elders tell stories" },
+          { "src": "IMAGES/Kids Storytelling.jpg", "caption": "Elder sharing wisdom about the forest" },
+          { "src": "IMAGES/elders.jpg", "caption": "Children participating in storytelling session" }
+        ],
+        "galleryVideos": [
+          { "src": "VIDEOS/storytelling_session.mp4", "caption": "Storytelling session highlights" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "retreat",
+    "title": "Retreats",
+    "description": "A section of the youths engage in outdoor games as a platform for team bonding and physical development.",
+    "category": "events",
+    "parentEvent": "Retreat",
+    "photographer": {
+      "name": "NASCEC Media Team",
+      "website": "https://nascec.org"
+    },
+    "subEvents": [
+      {
+        "id": "sub_youth_1",
+        "title": "Youth Retreat",
+        "location": "Kaimosi",
+        "date": "2026-07-13",
+        "description": "The youths engaged in outdoor games as a platform for team bonding and physical development.",
+        "photos": 6,
+        "videos": 1,
+        "galleryImages": [
+          {"src":"IMAGES/YouTube Banner CBO.jpg"},
+          { "src": "IMAGES/A Section of Ecogeim members together with the Patron NASCEC (1).jpg", "caption": "Group photo after the retreat" },
+          { "src": "IMAGES/A section of the youths engage in outdoor games as a platform for team bonding and physical development.jpg", "caption": "Youths playing outdoor games" },
+          {"src":"IMAGES/Youth Reatreat 4.jpg"},
+          {"src":"IMAGES/Youth Reatreat 5.jpg"},
+          {"src":"IMAGES/Youth Retreat2.jpg"}
+
+        ],
+        "galleryVideos": [
+          { "src": "VIDEOS/nascec-video.mp4", "caption": "Youth retreat highlights" }
+        ]
+      }
+    ]
+  }
+  
+]

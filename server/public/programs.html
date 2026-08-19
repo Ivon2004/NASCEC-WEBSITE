@@ -4,15 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NASCEC | Programs</title>
-  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body class="immersive-page programs-page">
-  <div class="site-video-bg" aria-hidden="true">
-    <video autoplay muted loop playsinline preload="auto" poster="IMAGES/logo.jpeg">
-      <source src="IMAGES/nascec-logo-animation.mp4" type="video/mp4">
-      Your browser does not support video playback.
-    </video>
-  </div>
+
 
   <header>
     <div id="logo_container">
@@ -25,6 +21,8 @@
       <a href="programs.html">Programs</a>
       <a href="stories.html">Stories</a>
       <a href="gallery.html">Gallery</a>
+      <a href="#" class="nav-cta open-login">Field Data</a>
+    
       <a href="contact.html">Contact Us</a>
     </nav>
   </header>
@@ -48,7 +46,15 @@
             <div class="program-copy">
               <p class="program-tag">Program 1</p>
               <h3>Elders' Wisdom Archives</h3>
-              <img src="IMAGES/elders.jpg" alt="Elders Sharing Stories" class="program-image">
+              <div class="program-image-wrap">
+                <figure class="program-figure">
+                  <img src="IMAGES/elders.jpg" alt="Elders Sharing Stories" class="program-image">
+                  <figcaption>
+                    <span class="program-caption">Elders Sharing Stories</span>
+                    <span class="program-credit">Photo: NASCEC Media Team</span>
+                  </figcaption>
+                </figure>
+              </div>
               <p>
                 Documenting voices, preserving heritage. We partner with community elders as our
                 living libraries. Through respectful audio-visual recordings, we capture stories,
@@ -66,7 +72,15 @@
             <div class="program-copy">
               <p class="program-tag">Program 2</p>
               <h3>Storytelling for Restoration</h3>
-              <img src="IMAGES/tree_planting.jpg" alt="Tree Planting Activity" class="program-image">
+              <div class="program-image-wrap">
+                <figure class="program-figure">
+                  <img src="IMAGES/Storytelling.jpg" alt="Storytelling for Restoration" class="program-image">
+                  <figcaption>
+                    <span class="program-caption">Young children listen as a elders tell a story about nature, and these activities ensure through oral tradition the children  build environmental awareness</span>
+                    <span class="program-credit">Photo: NASCEC Media Team</span>
+                  </figcaption>
+                </figure>
+              </div>
               <p>
                 Every story plants a seed. This flagship environmental action program organizes
                 community story circles where tree planting is paired with stories about each tree's
@@ -82,7 +96,15 @@
             <div class="program-copy">
               <p class="program-tag">Program 3</p>
               <h3>Cultural Ecology Festival</h3>
-              <img src="IMAGES/festival.jpg" alt="Cultural Festival" class="program-image">
+              <div class="program-image-wrap">
+                <figure class="program-figure">
+                  <img src="IMAGES\Youth participants engage in a game of Snakes and Ladders during an indoor session as a tool for strategic thinking and peer interaction.jpg" class="program-image">
+                  <figcaption>
+                    <span class="program-caption">Youth participants engage in a game of Snakes and Ladders during an indoor session as a tool for strategic thinking and peer interaction.</span>
+                    <span class="program-credit">Photo: NASCEC Media Team</span>
+                  </figcaption>
+                </figure>
+              </div>
               <p>
                 Celebrating our heritage, protecting our home. This annual festival is a vibrant
                 showcase of performance, learning, and collective environmental action that brings
@@ -99,17 +121,26 @@
             <div class="program-copy">
               <p class="program-tag">Program 4</p>
               <h3>Youth Ambassador Corps (YAC)</h3>
-              <img src="IMAGES/youth.jpg" alt="Youth Ambassadors" class="program-image">
-              <p style="color:rgb(249, 252, 252)">
+              <div class="program-image-wrap">
+                <figure class="program-figure">
+                  <img src="IMAGES/youth.jpg" alt="Youth Ambassadors" class="program-image">
+                  <figcaption>
+                    <span class="program-caption">Youth Ambassador Corps</span>
+                    <span class="program-credit">Photo: NASCEC Media Team</span>
+                  </figcaption>
+                </figure>
+              </div>
+              <p>
                 Empowering the next generation of stewards. Young leaders are trained to bridge
                 storytelling, environmental action, and digital communication rooted in indigenous
                 knowledge.
               </p>
-              <p><b>Key Activities</b></p><p  style="color:rgb(249, 252, 252)">
+              <p><b>Key Activities</b></p>
               <p>Bi-annual workshops on leadership and indigenous knowledge.</p>
               <p>Mentorship pairings with community elders.</p>
               <p>Peer-to-peer environmental education in schools.</p>
-              <p>Leading mini-projects in local hubs.</p></p>          </div>
+              <p>Leading mini-projects in local hubs.</p>
+            </div>
           </div>
 
           <button class="nav-btn nav-left" onclick="prevProgram()" aria-label="Previous program">&lsaquo;</button>
@@ -119,10 +150,32 @@
     </section>
   </main>
 
-  <footer>
-    &copy; 2026 Native Storytelling for Culture and Environment Conservation (NASCEC)
-  </footer>
+  <!-- ===== FOOTER ===== -->
+<footer>
+  <div style="max-width:1200px; margin:0 auto; padding:2rem 1.5rem; text-align:center;">
+    <div style="display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; margin-bottom:1rem;">
+      <a href="https://www.youtube.com/channel/UCRepZ9ndd3mmdIUkpGHRqGQ" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
+        <i class="fab fa-youtube" style="color:#ff0000;"></i> YouTube
+      </a>
+      <a href="https://www.linkedin.com/in/nascec-cbo-b0a99a428/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
+        <i class="fab fa-linkedin-in" style="color:#0a66c2;"></i> LinkedIn
+      </a>
+      <a href="mailto:contact.us@nascec.org" style="color:#fff; text-decoration:none; font-size:0.9rem;">
+        <i class="fas fa-envelope" style="color:#ea4335;"></i> Email
+      </a>
+      <a href="https://wa.me/254700000000?text=Hello%20NASCEC" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
+        <i class="fab fa-whatsapp" style="color:#25d366;"></i> WhatsApp
+      </a>
+    </div>
+    <p style="color:rgba(255,255,255,0.6); font-size:0.8rem; margin:0;">
+      &copy; 2026 Native Storytelling for Culture and Environment Conservation (NASCEC)
+    </p>
+  </div>
+</footer>
 
   <script src="css/js/programs.js"></script>
 </body>
+  </body>
+  <script src="js/loginModal.js"></script>
+  </html>
 </html>

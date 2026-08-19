@@ -1,19 +1,411 @@
-<!DOCTYPE html lang="en">
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us</title>
-  <link rel="stylesheet" href="CSS/style.css">
+  <title>About Us | NASCEC</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ===== ABOUT PAGE STYLES ===== */
+    .about-page {
+      background: #e0e0e0;
+    }
+
+    /* ===== ABOUT US SECTION ===== */
+    /* Nav to About - use 10rem or 12rem */
+
+
+
+    #about-us {
+  max-width: 1100px; /* ← Change this line only */
+  margin: 4rem auto 0;
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+}
+
+    #about-us h2 {
+      font-size: 2.8rem;
+      color: #000000;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    #about-us h2::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #38701f;
+      margin: 1.0rem auto 1.5rem;
+      border-radius: 4px;
+    }
+
+    #about-us h3 {
+      font-size: 1.4rem;
+      color: #f59506;
+      margin-top: 2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    #about-us p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #f8f4f4;
+      max-width: 800px;
+      margin: 0 auto 1.2rem;
+    }
+
+    /* ===== TEAM SECTION ===== */
+    .team-container {
+      max-width: 1100px;
+      padding: 2rem 1.5rem 4rem;
+       margin: 4rem auto 0;
+    }
+
+    .team-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .team-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #388d13;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .team-header h2 {
+      font-size: 2.2rem;
+      color: #000000;
+      font-weight: 700;
+    }
+
+    .team-header h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #468a29;
+      margin: 0.5rem auto 0;
+      border-radius: 4px;
+    }
+
+    /* ===== TEAM GRID ===== */
+    #team {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    /* ===== TEAM CARD ===== */
+    .team-card {
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(236, 162, 3, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(243, 139, 2, 0.1);
+    }
+
+    .team-card-inner {
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+    }
+
+    /* ===== PROFILE HEADER ===== */
+    .team-profile-header {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .team-photo-wrapper {
+      width: 80px;
+      height: 80px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #338012;
+      background: #eef2f6;
+    }
+
+    .team-photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .team-name-role {
+      flex: 1;
+    }
+
+    .team-name-role .team-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #000000;
+      margin: 0 0 2px 0;
+    }
+
+    .team-name-role .team-role {
+      font-size: 0.85rem;
+      color: #41941e;
+      font-weight: 600;
+      margin: 0;
+      letter-spacing: 0.3px;
+    }
+
+    /* ===== READ MORE BUTTON ===== */
+    .team-read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.3rem 1rem;
+      background: transparent;
+      color: #000000;
+      border: 2px solid #000000;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      font-family: inherit;
+      margin-top: 0.5rem;
+      text-decoration: none;
+      width: fit-content;
+    }
+
+    .team-read-more:hover {
+      background: #000000;
+      color: #ffffff;
+    }
+
+    .team-read-more i {
+      font-size: 0.65rem;
+    }
+
+    /* ===== BIO - Hidden by default ===== */
+    .team-bio-wrapper {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+      opacity: 0;
+      margin: 0;
+    }
+
+    .team-bio-wrapper.open {
+      max-height: 500px;
+      opacity: 1;
+      margin: 0.8rem 0 0.5rem;
+    }
+
+    .team-bio-wrapper .team-bio {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #1a1a1a;
+      margin: 0;
+      padding-top: 0.8rem;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .team-bio-wrapper .team-bio a {
+      color: #000000;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .team-bio-wrapper .team-bio a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== LET'S CONNECT - Only Email & LinkedIn ===== */
+    .team-connect {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e8f0e8;
+    }
+
+    .team-connect-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #000000;
+      margin: 0 0 0.5rem 0;
+      letter-spacing: 0.5px;
+    }
+
+    .team-connect-title i {
+      color: #f3cf03;
+      margin-right: 6px;
+    }
+
+    .team-profile-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .team-profile-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: #1a1a1a;
+      text-decoration: none;
+      padding: 0.35rem 1rem;
+      background: #f1f5f1;
+      border-radius: 20px;
+      transition: 0.3s;
+      border: 1px solid transparent;
+      font-weight: 500;
+    }
+
+    .team-profile-links a i {
+      font-size: 0.8rem;
+      color: #000000;
+    }
+
+    .team-profile-links a:hover {
+      background: #000000;
+      color: #ffffff;
+      border-color: #000000;
+      transform: translateY(-2px);
+    }
+
+    .team-profile-links a:hover i {
+      color: #7ed957;
+    }
+
+    /* ===== EMAIL LINK STYLE ===== */
+    .team-profile-links a.email-link {
+      background: #e8f5e9;
+      color: #000000;
+    }
+
+    .team-profile-links a.email-link i {
+      color: #7ed957;
+    }
+
+    .team-profile-links a.email-link:hover {
+      background: #000000;
+      color: #ffffff;
+    }
+
+    .team-profile-links a.email-link:hover i {
+      color: #7ed957;
+    }
+
+    /* ===== LINKEDIN LINK STYLE ===== */
+    .team-profile-links a.linkedin-link {
+      background: #e8f0fe;
+      color: #000000;
+    }
+
+    .team-profile-links a.linkedin-link i {
+      color: #0a66c2;
+    }
+
+    .team-profile-links a.linkedin-link:hover {
+      background: #0a66c2;
+      color: #ffffff;
+    }
+
+    .team-profile-links a.linkedin-link:hover i {
+      color: #ffffff;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      #about-us {
+        padding: 5rem 1rem 2rem;
+      }
+
+      #about-us h2 {
+        font-size: 2rem;
+      }
+
+      #about-us p {
+        font-size: 0.95rem;
+      }
+
+      .team-container {
+        padding: 1rem 1rem 3rem;
+      }
+
+      .team-header h2 {
+        font-size: 1.6rem;
+      }
+
+      #team {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .team-photo-wrapper {
+        width: 65px;
+        height: 65px;
+      }
+
+      .team-name-role .team-name {
+        font-size: 1rem;
+      }
+
+      .team-profile-links {
+        gap: 0.4rem;
+      }
+
+      .team-profile-links a {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.8rem;
+      }
+
+      .team-card-inner {
+        padding: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .team-profile-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .team-photo-wrapper {
+        width: 80px;
+        height: 80px;
+      }
+
+      .team-read-more {
+        align-self: center;
+      }
+
+      .team-profile-links {
+        justify-content: center;
+      }
+
+      .team-connect-title {
+        text-align: center;
+      }
+
+      #about-us h2 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
 </head>
 <body class="about-page">
-  <div class="about-video-bg">
-    <video autoplay muted loop playsinline preload="auto" poster="IMAGES/logo.jpeg">
-      <source src="IMAGES/nascec-logo-animation.mp4" type="video/mp4">
-      Your browser does not support video playback.
-    </video>
-  </div>
 
+  <!-- ===== HEADER ===== -->
   <header>
     <div id="logo_container">
       <img src="IMAGES/logo.jpeg" alt="NASCEC Logo" class="logo">
@@ -25,171 +417,280 @@
       <a href="programs.html">Programs</a>
       <a href="stories.html">Stories</a>
       <a href="gallery.html">Gallery</a>
+      <a href="#" class="nav-cta open-login">Field Data</a>
       <a href="contact.html">Contact Us</a>
     </nav>
   </header>
 
+  <!-- ===== ABOUT US SECTION ===== -->
   <section>
     <div id="about-us">
-      <h2>About US</h2>
+      <h2>About Us</h2>
       <h3>Rooted in Vihiga, this is where our journey begins</h3>
       <p>
         Our journey began under the canopy of Tiriki Forest, as we walked in the thin footpaths followed by those who seek firewood and herbs in the forest. Here elders lamented that the stories, song and the proverbs of the old golden days were fading alongside the forests that once covered our land. We then realized that the erosion of our cultural memory and the erosion of our soils, as well as the declining state of our biodiversity were the same story. As NASCEC, we exist to rewrite that story.
       </p>
       <p>
-        We are not just an outside CBO. We are farmers, teachers, elders, retirees, youth, etc, from withing Vihiga, more so, Tiriki land. We believe that the ancient wisdom embedded in our folktales is not merely history, or mythology, it is a practical, living guidebook for environmental stewardship. It teaches us which native trees like to plant, how to read the rains, and why sacred groves are to be protected. Our mission is to harness this indigenous knowledge through the power of native storytelling to tackle today's challenges of climate change, deforestation, water scarcity, and cultural loss.
+        We are not just an outside CBO. We are farmers, teachers, elders, retirees, youth, etc, from within Vihiga, more so, Tiriki land. We believe that the ancient wisdom embedded in our folktales is not merely history, or mythology, it is a practical, living guidebook for environmental stewardship. It teaches us which native trees like to plant, how to read the rains, and why sacred groves are to be protected. Our mission is to harness this indigenous knowledge through the power of native storytelling to tackle today's challenges of climate change, deforestation, water scarcity, and cultural loss.
       </p>
 
       <h3>Our work is a circle</h3>
       <p>
-        We record the stories, we plant the trees mentioned in them, and we teach the next generation to value both. From the edges of Kibiri Forest to the uttermost parts of Vihiga County, we are building a people-driven movement that honors our past to secure our future
+        We record the stories, we plant the trees mentioned in them, and we teach the next generation to value both. From the edges of Kibiri Forest to the uttermost parts of Vihiga County, we are building a people-driven movement that honors our past to secure our future.
       </p>
     </div>
 
+    <!-- ===== TEAM SECTION ===== -->
     <div class="team-container">
       <div class="team-header">
         <p class="team-label">Part Of Our Team</p>
-        <h2>Meet The People Behind NASCEC</h2>
+        <h2>Meet The Team Behind NASCEC</h2>
       </div>
+
       <div id="team">
+        <!-- ===== Antony Osome ===== -->
         <article class="team-card">
-          <img src="/IMAGES/patron.png" alt="Antony Osome" class="team-photo">
-          <div class="team-card-body">
-            <h3 class="team-name">Antony Osome</h3>
-            <p class="team-role">Patron</p>
-            <p class="team-bio">Profile details coming soon.</p>
-            <div class="team-connect" aria-label="Antony Osome profile links">
-              <p class="team-connect-title">Let's connect!</p>
+          <div class="team-card-inner">
+            <div class="team-profile-header">
+              <div class="team-photo-wrapper">
+                <img src="/IMAGES/patron1.jpg" alt="Antony Osome">
+              </div>
+              <div class="team-name-role">
+                <h3 class="team-name">Antony Osome</h3>
+                <p class="team-role">Patron</p>
+              </div>
+            </div>
+
+            <button class="team-read-more" onclick="toggleBio(this)">
+              <i class="fas fa-chevron-down"></i> View Profile
+            </button>
+
+            <div class="team-bio-wrapper">
+              <p class="team-bio">He is a communication and film scholar and a Doctoral Researcher in Anthropology of Climate Change and Environmental Conservation at the University of Cologne, where he is affiliated with the Global South Studies Center (GSSC). His work focuses on eco-narratives, ethnology and environmental visual anthropology. He holds an MA in Film Studies from Kenyatta University and a BA in Communication and Media Technology from Maseno University. As a filmmaker, screenplay writer, and former junior lecturer, his works currently focuses on exploring how storytelling shapes environmental attitudes.</p>
+            </div>
+
+            <div class="team-connect">
+              <p class="team-connect-title"><i class="fas fa-link"></i> Let's Connect</p>
               <div class="team-profile-links">
-                <a href="https://www.facebook.com/nascec" target="_blank" rel="noopener noreferrer">Facebook</a>
-                <a href="https://www.instagram.com/nascec" target="_blank" rel="noopener noreferrer">Instagram</a>
-                <a href="https://www.linkedin.com/company/nascec" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://wa.me/254711779215" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                <a href="mailto:aosome@nascec.org" class="email-link"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://www.linkedin.com/in/antony-osome-245700247/" target="_blank" class="linkedin-link"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
               </div>
             </div>
           </div>
         </article>
 
+        <!-- ===== Willhite Khoyi ===== -->
         <article class="team-card">
-          <img src="/IMAGES/patron.png" alt="Willhite Khoyi" class="team-photo">
-          <div class="team-card-body">
-            <h3 class="team-name">Willhite Khoyi</h3>
-            <p class="team-role">Chair</p>
-            <p class="team-bio">Profile details coming soon.</p>
-            <div class="team-connect" aria-label="Willhite Khoyi profile links">
-              <p class="team-connect-title">Let's connect!</p>
+          <div class="team-card-inner">
+            <div class="team-profile-header">
+              <div class="team-photo-wrapper">
+                <img src="/IMAGES/chair.jpg" alt="Willhite Khoyi">
+              </div>
+              <div class="team-name-role">
+                <h3 class="team-name">Willhite Khoyi</h3>
+                <p class="team-role">Chair</p>
+              </div>
+            </div>
+
+            <button class="team-read-more" onclick="toggleBio(this)">
+              <i class="fas fa-chevron-down"></i> View Profile
+            </button>
+
+            <div class="team-bio-wrapper">
+              <p class="team-bio">He holds a Diploma in Social Work and Community Development, as well as in Bible Studies, and a Certificate in Research and Innovation. Wilhite has extensive experience in community involvement and has served in various capacities within local and county administration mechanisms as a representative of the people. His background in community development and governance informs his leadership approach, which is intended to ensure that NASCEC's environmental and youth initiatives remain grounded in the needs and aspirations of the community.</p>
+            </div>
+
+            <div class="team-connect">
+              <p class="team-connect-title"><i class="fas fa-link"></i> Let's Connect</p>
               <div class="team-profile-links">
-                <a href="https://www.facebook.com/nascec" target="_blank" rel="noopener noreferrer">Facebook</a>
-                <a href="https://www.instagram.com/nascec" target="_blank" rel="noopener noreferrer">Instagram</a>
-                <a href="https://www.linkedin.com/company/nascec" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://wa.me/254711779215" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                <a href="mailto:willhite@nascec.org" class="email-link"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://www.linkedin.com/company/nascec" target="_blank" class="linkedin-link"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
               </div>
             </div>
           </div>
         </article>
 
+        <!-- ===== Sheilah Shilisia ===== -->
         <article class="team-card">
-          <img src="/IMAGES/patron.png" alt="Sheilah Shilisia" class="team-photo">
-          <div class="team-card-body">
-            <h3 class="team-name">Sheilah Shilisia</h3>
-            <p class="team-role">Vice Chair</p>
-            <p class="team-bio">Profile details coming soon.</p>
-            <div class="team-connect" aria-label="Sheilah Shilisia profile links">
-              <p class="team-connect-title">Let's connect!</p>
+          <div class="team-card-inner">
+            <div class="team-profile-header">
+              <div class="team-photo-wrapper">
+                <img src="/IMAGES/patron.png" alt="Sheilah Shilisia">
+              </div>
+              <div class="team-name-role">
+                <h3 class="team-name">Sheilah Shilisia</h3>
+                <p class="team-role">Vice Chair</p>
+              </div>
+            </div>
+
+            <button class="team-read-more" onclick="toggleBio(this)">
+              <i class="fas fa-chevron-down"></i> View Profile
+            </button>
+
+            <div class="team-bio-wrapper">
+              <p class="team-bio">Profile details coming soon.</p>
+            </div>
+
+            <div class="team-connect">
+              <p class="team-connect-title"><i class="fas fa-link"></i> Let's Connect</p>
               <div class="team-profile-links">
-                <a href="https://www.facebook.com/nascec" target="_blank" rel="noopener noreferrer">Facebook</a>
-                <a href="https://www.instagram.com/nascec" target="_blank" rel="noopener noreferrer">Instagram</a>
-                <a href="https://www.linkedin.com/company/nascec" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://wa.me/254711779215" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                <a href="mailto:sheilah@nascec.org" class="email-link"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://www.linkedin.com/company/nascec" target="_blank" class="linkedin-link"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
               </div>
             </div>
           </div>
         </article>
 
+        <!-- ===== Phammy Aluda ===== -->
         <article class="team-card">
-          <img src="/IMAGES/patron.png" alt="Phammy Aluda" class="team-photo">
-          <div class="team-card-body">
-            <h3 class="team-name">Phammy Aluda</h3>
-            <p class="team-role">Secretary</p>
-            <p class="team-bio">Profile details coming soon.</p>
-            <div class="team-connect" aria-label="Phammy Aluda profile links">
-              <p class="team-connect-title">Let's connect!</p>
+          <div class="team-card-inner">
+            <div class="team-profile-header">
+              <div class="team-photo-wrapper">
+                <img src="/IMAGES/patron.png" alt="Phammy Aluda">
+              </div>
+              <div class="team-name-role">
+                <h3 class="team-name">Phammy Aluda</h3>
+                <p class="team-role">Secretary</p>
+              </div>
+            </div>
+
+            <button class="team-read-more" onclick="toggleBio(this)">
+              <i class="fas fa-chevron-down"></i> View Profile
+            </button>
+
+            <div class="team-bio-wrapper">
+              <p class="team-bio">Profile details coming soon.</p>
+            </div>
+
+            <div class="team-connect">
+              <p class="team-connect-title"><i class="fas fa-link"></i> Let's Connect</p>
               <div class="team-profile-links">
-                <a href="https://www.facebook.com/nascec" target="_blank" rel="noopener noreferrer">Facebook</a>
-                <a href="https://www.instagram.com/nascec" target="_blank" rel="noopener noreferrer">Instagram</a>
-                <a href="https://www.linkedin.com/company/nascec" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://wa.me/254711779215" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                <a href="mailto:phammy@nascec.org" class="email-link"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://www.linkedin.com/company/nascec" target="_blank" class="linkedin-link"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
               </div>
             </div>
           </div>
         </article>
 
+        <!-- ===== Samuel Barasa ===== -->
         <article class="team-card">
-          <img src="/IMAGES/patron.png" alt="Samuel Barasa" class="team-photo">
-          <div class="team-card-body">
-            <h3 class="team-name">Samuel Barasa</h3>
-            <p class="team-role">Vice Secretary</p>
-            <p class="team-bio">Profile details coming soon.</p>
-            <div class="team-connect" aria-label="Samuel Barasa profile links">
-              <p class="team-connect-title">Let's connect!</p>
+          <div class="team-card-inner">
+            <div class="team-profile-header">
+              <div class="team-photo-wrapper">
+                <img src="/IMAGES/Vice_secretary.jpeg" alt="Samuel Barasa">
+              </div>
+              <div class="team-name-role">
+                <h3 class="team-name">Samuel Barasa</h3>
+                <p class="team-role">Vice Secretary</p>
+              </div>
+            </div>
+
+            <button class="team-read-more" onclick="toggleBio(this)">
+              <i class="fas fa-chevron-down"></i> View Profile
+            </button>
+
+            <div class="team-bio-wrapper">
+              <p class="team-bio">I am an enthusiastic environmentalist and a graduate of JKUAT, holding a Bachelor's degree in GIS. My technical expertise is complemented by a short course in Environmental Impact Assessment and Audit from African Nazarene University. Currently, I serve at the Centre of Excellence in Climate Action and Research, where I engage with pressing climate matters daily. As a proud member of Native Storytellers CBO, I am passionate about merging technology with conservation to protect our natural heritage. I actively associate with projects that foster environmental stewardship.Every action for the earth is a story of hope for tomorrow.</p>
+            </div>
+
+            <div class="team-connect">
+              <p class="team-connect-title"><i class="fas fa-link"></i> Let's Connect</p>
               <div class="team-profile-links">
-                <a href="https://wa.me/254711779215" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                <a href="mailto:samuel@nascec.org" class="email-link"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://www.linkedin.com/company/nascec" target="_blank" class="linkedin-link"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
               </div>
             </div>
           </div>
         </article>
 
+        <!-- ===== Vincent Mugodo ===== -->
         <article class="team-card">
-          <img src="/IMAGES/patron.png" alt="Vincent Mugodo" class="team-photo">
-          <div class="team-card-body">
-            <h3 class="team-name">Vincent Mugodo</h3>
-            <p class="team-role">Treasurer</p>
-            <p class="team-bio">Profile details coming soon.</p>
-            <div class="team-connect" aria-label="Vincent Mugodo profile links">
-              <p class="team-connect-title">Let's connect!</p>
+          <div class="team-card-inner">
+            <div class="team-profile-header">
+              <div class="team-photo-wrapper">
+                <img src="/IMAGES/Treasurer.jpeg" alt="Vincent Mugodo">
+              </div>
+              <div class="team-name-role">
+                <h3 class="team-name">Vincent Mugodo</h3>
+                <p class="team-role">Treasurer</p>
+              </div>
+            </div>
+
+            <button class="team-read-more" onclick="toggleBio(this)">
+              <i class="fas fa-chevron-down"></i> View Profile
+            </button>
+
+            <div class="team-bio-wrapper">
+              <p class="team-bio">Graduate: B. A. (In Anthropology) from The University of Nairobi, Businessman, Environmental Conservationist. Founder member NASCEC.</p>
+            </div>
+
+            <div class="team-connect">
+              <p class="team-connect-title"><i class="fas fa-link"></i> Let's Connect</p>
               <div class="team-profile-links">
-                <a href="https://www.facebook.com/nascec" target="_blank" rel="noopener noreferrer">Facebook</a>
-                <a href="https://www.instagram.com/nascec" target="_blank" rel="noopener noreferrer">Instagram</a>
-                <a href="https://www.linkedin.com/company/nascec" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://wa.me/254711779215" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                <a href="mailto:vincent@nascec.org" class="email-link"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://www.linkedin.com/company/nascec" target="_blank" class="linkedin-link"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
               </div>
             </div>
           </div>
         </article>
 
+        <!-- ===== Ivon Mitchel ===== -->
         <article class="team-card">
-          <img src="/IMAGES/communication_manager.jpeg" alt="Ivon Mitchel" class="team-photo">
-          <div class="team-card-body">
-            <h3 class="team-name">Ivon Mitchel</h3>
-            <p class="team-role">Communication Manager</p>
-            <p class="team-bio">Helping brands find their voice and tell stories that matter. I craft clear, strategic messages that connect teams, engage audiences, and drive impact. Let's build something great together.
-            </p>
-            <div class="team-connect" aria-label="Ivon Mitchel profile links">
-              <p class="team-connect-title">Let's connect!</p>
+          <div class="team-card-inner">
+            <div class="team-profile-header">
+              <div class="team-photo-wrapper">
+                <img src="/IMAGES/communication_manager.jpeg" alt="Ivon Mitchel">
+              </div>
+              <div class="team-name-role">
+                <h3 class="team-name">Ivon Mitchel</h3>
+                <p class="team-role">Communication Manager</p>
+              </div>
+            </div>
+
+            <button class="team-read-more" onclick="toggleBio(this)">
+              <i class="fas fa-chevron-down"></i> View Profile
+            </button>
+
+            <div class="team-bio-wrapper">
+              <p class="team-bio"><strong>Computer Science Student | Founder, EcoGeim | Student Innovator</strong><br><br>Passionate about building technology that serves people and the planet. I work at the intersection of innovation, environmental conservation, and community engagement, creating digital solutions that empower local communities and drive sustainable impact.</p>
+            </div>
+
+            <div class="team-connect">
+              <p class="team-connect-title"><i class="fas fa-link"></i> Let's Connect</p>
               <div class="team-profile-links">
-                <a href="https://www.linkedin.com/in/ivon-mitchel-233670355" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="mailto:ivonmitchelindesia@gmail.com">Email</a>
-                <a href="https://x.com/mishdeaurum" target="_blank" rel="noopener noreferrer">x</a>
-                <a href="https://www.instagram.com/ivonmitchel?igsh=MW5xenZzdGNldmQ4dA==" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="mailto:ivonmitchelindesia@gmail.com" class="email-link"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://www.linkedin.com/in/ivon-mitchel-233670355" target="_blank" class="linkedin-link"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
               </div>
             </div>
           </div>
         </article>
-         <article class="team-card">
-          <img src="/IMAGES/Youth_Leader.jpeg" alt="Pauline Minayo" class="team-photo">
-          <div class="team-card-body">
-            <h3 class="team-name">Pauline Minayo</h3>
-            <p class="team-role">Youth Leader</p>
-            <p class="team-bio"><p><strong>Contact:</strong> 0758154416</p>
-<p><strong>Email:</strong> <a href="mailto:paulineminayo050@gmail.com">paulineminayo050@gmail.com</a></p>
-<p><strong>Profession:</strong> B. Ed  student currently studying at Kaimosi Friends University. A third year student and very perssionate about the new CBC  Curriculum.</p></p>
-            <div class="team-connect" aria-label="Pauline Minayo profile links">
-              <p class="team-connect-title">Let's connect!</p>
+
+        <!-- ===== Pauline Minayo ===== -->
+        <article class="team-card">
+          <div class="team-card-inner">
+            <div class="team-profile-header">
+              <div class="team-photo-wrapper">
+                <img src="/IMAGES/Youth_leader.jpeg" alt="Pauline Minayo">
+              </div>
+              <div class="team-name-role">
+                <h3 class="team-name">Pauline Minayo</h3>
+                <p class="team-role">Youth Leader</p>
+              </div>
+            </div>
+
+            <button class="team-read-more" onclick="toggleBio(this)">
+              <i class="fas fa-chevron-down"></i> View Profile
+            </button>
+
+            <div class="team-bio-wrapper">
+              <p class="team-bio">Profession:</strong> B. Ed student currently studying at Kaimosi Friends University. A third year student and very passionate about the new CBC Curriculum.</p>
+            </div>
+
+            <div class="team-connect">
+              <p class="team-connect-title"><i class="fas fa-link"></i> Let's Connect</p>
               <div class="team-profile-links">
-                <a href="https://www.facebook.com/pauline.kea.434368" target="_blank" rel="noopener noreferrer">Facebook</a>
-                <a href="https://www.instagram.com/pauline_minayo" target="_blank" rel="noopener noreferrer">Instagram</a>
-                <a href="https://www.linkedin.com/in/pauline-minayo-06428b235" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://wa.me/254758154416" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                <a href="mailto:paulineminayo050@gmail.com" class="email-link"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://www.linkedin.com/in/pauline-minayo-06428b235" target="_blank" class="linkedin-link"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
               </div>
             </div>
           </div>
@@ -199,8 +700,46 @@
     </div>
   </section>
 
-  <footer>
-    © 2026 Native Storytelling for Culture and Environment Conservation (NASCEC)
-  </footer>
+  <!-- ===== FOOTER ===== -->
+<footer>
+  <div style="max-width:1200px; margin:0 auto; padding:2rem 1.5rem; text-align:center;">
+    <div style="display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; margin-bottom:1rem;">
+      <a href="https://www.youtube.com/channel/UCRepZ9ndd3mmdIUkpGHRqGQ" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
+        <i class="fab fa-youtube" style="color:#ff0000;"></i> YouTube
+      </a>
+      <a href="https://www.linkedin.com/in/nascec-cbo-b0a99a428/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
+        <i class="fab fa-linkedin-in" style="color:#0a66c2;"></i> LinkedIn
+      </a>
+      <a href="mailto:contact.us@nascec.org" style="color:#fff; text-decoration:none; font-size:0.9rem;">
+        <i class="fas fa-envelope" style="color:#ea4335;"></i> Email
+      </a>
+      <a href="https://wa.me/254700000000?text=Hello%20NASCEC" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
+        <i class="fab fa-whatsapp" style="color:#25d366;"></i> WhatsApp
+      </a>
+    </div>
+    <p style="color:rgba(255,255,255,0.6); font-size:0.8rem; margin:0;">
+      &copy; 2026 Native Storytelling for Culture and Environment Conservation (NASCEC)
+    </p>
+  </div>
+</footer>
+
+  <script>
+    // ===== TOGGLE BIO FUNCTION =====
+    function toggleBio(button) {
+      const wrapper = button.parentElement.querySelector('.team-bio-wrapper');
+      const icon = button.querySelector('i');
+
+      if (wrapper.classList.contains('open')) {
+        wrapper.classList.remove('open');
+        icon.className = 'fas fa-chevron-down';
+        button.innerHTML = '<i class="fas fa-chevron-down"></i> View Profile';
+      } else {
+        wrapper.classList.add('open');
+        icon.className = 'fas fa-chevron-up';
+        button.innerHTML = '<i class="fas fa-chevron-up"></i> See Less';
+      }
+    }
+  </script>
+  <script src="js/loginModal.js"></script>
 </body>
 </html>

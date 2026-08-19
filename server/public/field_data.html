@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Field Data | NASCEC</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ===== BODY - Dark Green Background ===== */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0f3b2c 0%, #1a5a44 50%, #2d7a5e 100%);
+      padding: 2rem 1.5rem;
+      position: relative;
+      margin: 0;
+    }
+
+    /* ===== FORM CONTAINER - Centered with scrolling ===== */
+    .form-container {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 28px;
+      padding: 2.5rem 3rem;
+      max-width: 580px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      animation: slideUp 0.6s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* ===== CUSTOM SCROLLBAR ===== */
+    .form-container::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .form-container::-webkit-scrollbar-track {
+      background: #e2e8f0;
+      border-radius: 10px;
+    }
+
+    .form-container::-webkit-scrollbar-thumb {
+      background: #0f3b2c;
+      border-radius: 10px;
+    }
+
+    .form-container::-webkit-scrollbar-thumb:hover {
+      background: #2d7a5e;
+    }
+
+    /* Firefox scrollbar */
+    .form-container {
+      scrollbar-width: thin;
+      scrollbar-color: #0f3b2c #e2e8f0;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== HEADER ===== */
+    .form-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    .form-header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .form-header .icon-wrapper {
+      width: 52px;
+      height: 52px;
+      background: rgba(16, 87, 1, 0.92);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(15, 59, 44, 0.3);
+    }
+
+    .form-header .icon-wrapper i {
+      font-size: 1.4rem;
+      color: #7ed957;
+    }
+
+    .form-header h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #0f3b2c;
+      margin: 0;
+    }
+
+    .form-header h2 span {
+      color: rgba(16, 87, 1, 0.92);
+    }
+
+    .form-header .logout-btn {
+      background: #dc2626;
+      color: #fff;
+      border: none;
+      border-radius: 40px;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+    }
+
+    .form-header .logout-btn:hover {
+      background: #b91c1c;
+      transform: scale(1.05);
+    }
+
+    .form-header .logout-btn i {
+      font-size: 0.8rem;
+    }
+
+    /* ===== FORM ===== */
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(16, 87, 1, 0.92);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.3px;
+    }
+
+    .form-group label i {
+      color: rgba(16, 87, 1, 0.92);
+      margin-right: 8px;
+      width: 18px;
+    }
+
+    .form-group .input-wrapper {
+      position: relative;
+    }
+
+    .form-group .input-wrapper .input-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      font-size: 0.9rem;
+      transition: 0.3s;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem 0.8rem 2.8rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: #1e293b;
+      background: #f8fafc;
+      transition: 0.3s;
+      outline: none;
+    }
+
+    .form-group textarea {
+      padding-left: 1rem;
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    /* ===== LOCATION WITH GPS ===== */
+    .location-row {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .location-row .input-wrapper {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .location-row .input-wrapper input {
+      padding-left: 2.8rem;
+    }
+
+    .gps-row {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .gps-row .input-wrapper {
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .gps-row .input-wrapper input {
+      padding-left: 2.8rem;
+    }
+
+    .btn-location {
+      background: rgba(16, 87, 1, 0.92);
+      color: #fff;
+      border: none;
+      border-radius: 40px;
+      padding: 0.7rem 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+      white-space: nowrap;
+      margin-top: 0.5rem;
+    }
+
+    .btn-location:hover {
+      background: #1a5a44;
+      transform: scale(1.02);
+    }
+
+    .btn-location i {
+      color: #7ed957;
+    }
+
+    /* ===== AUTOCOMPLETE DROPDOWN ===== */
+    .autocomplete-suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      max-height: 200px;
+      overflow-y: auto;
+      z-index: 100;
+      display: none;
+    }
+
+    .autocomplete-suggestions.show {
+      display: block;
+    }
+
+    .autocomplete-suggestions .suggestion-item {
+      padding: 0.7rem 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #f1f5f1;
+    }
+
+    .autocomplete-suggestions .suggestion-item:hover {
+      background: #f1f5f1;
+    }
+
+    .autocomplete-suggestions .suggestion-item:last-child {
+      border-bottom: none;
+    }
+
+    /* ===== SELECT DROPDOWN ===== */
+    .form-group select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      cursor: pointer;
+      padding-right: 2.8rem;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394a3b8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 12px;
+    }
+
+    .form-group select:focus {
+      border-color: #2d7a5e;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(45, 122, 94, 0.12);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232d7a5e' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 12px;
+    }
+
+    /* ===== INPUT FOCUS ===== */
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #2d7a5e;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(45, 122, 94, 0.12);
+    }
+
+    .form-group input:focus ~ .input-icon,
+    .form-group select:focus ~ .input-icon,
+    .form-group textarea:focus ~ .input-icon {
+      color: #2d7a5e;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #94a3b8;
+    }
+
+    /* ===== SUBMIT BUTTON ===== */
+    .btn-submit {
+      width: 100%;
+      padding: 0.9rem;
+      background: rgba(16, 87, 1, 0.92);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 0.5rem;
+      box-shadow: 0 4px 16px rgba(15, 59, 44, 0.3);
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(15, 59, 44, 0.4);
+      background: linear-gradient(135deg, #1a5a44, #2d7a5e);
+    }
+
+    .btn-submit:active {
+      transform: scale(0.98);
+    }
+
+    .btn-submit i {
+      font-size: 1rem;
+      color: #7ed957;
+      transition: 0.3s;
+    }
+
+    .btn-submit:hover i {
+      transform: translateX(4px);
+    }
+
+    /* ===== SUCCESS MESSAGE ===== */
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(16, 87, 1, 0.92);
+      border-radius: 12px;
+      border: 2px solid #7ed957;
+      margin-top: 1rem;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    .success-message i {
+      font-size: 2.5rem;
+      color: #7ed957;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .success-message h3 {
+      color: #ffffff;
+      font-size: 1.1rem;
+    }
+
+    .success-message p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.85rem;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* ===== FORM FOOTER ===== */
+    .form-footer {
+      text-align: center;
+      margin-top: 1.2rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .form-footer p {
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+
+    .form-footer p i {
+      color: #7ed957;
+      margin-right: 4px;
+    }
+
+    .form-footer a {
+      color: #2d7a5e;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .form-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .form-container {
+        padding: 1.8rem 1.5rem;
+        border-radius: 20px;
+      }
+
+      .form-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .form-header-left {
+        width: 100%;
+      }
+
+      .form-header .logout-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .form-header h2 {
+        font-size: 1.2rem;
+      }
+
+      .form-header .icon-wrapper {
+        width: 44px;
+        height: 44px;
+      }
+
+      .form-header .icon-wrapper i {
+        font-size: 1.2rem;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: 0.7rem 0.9rem 0.7rem 2.5rem;
+        font-size: 0.9rem;
+      }
+
+      .btn-submit {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      .location-row,
+      .gps-row {
+        flex-direction: column;
+      }
+
+      .location-row .input-wrapper,
+      .gps-row .input-wrapper {
+        min-width: 100%;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .form-container {
+        padding: 1.2rem 1rem;
+        border-radius: 16px;
+      }
+
+      .form-header h2 {
+        font-size: 1rem;
+      }
+
+      .form-group {
+        margin-bottom: 1rem;
+      }
+    }
+
+    /* ===== CONDITIONAL SECTION STYLES ===== */
+    .conditional-section {
+      border-top: 2px dashed #e2e8f0;
+      padding-top: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .conditional-section h3 {
+      font-size: 1rem;
+      color: #0f3b2c;
+      margin-bottom: 0.8rem;
+    }
+
+    .conditional-section h3 i {
+      color: #7ed957;
+    }
+
+    .field-note {
+      font-size: 0.7rem;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    .field-note i {
+      color: #7ed957;
+      margin-right: 4px;
+    }
+
+    /* ===== DURATION RADIO BUTTONS ===== */
+    .duration-options {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.8rem;
+    }
+
+    .duration-options label {
+      font-weight: 400;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      color: #1e293b;
+    }
+
+    .duration-options label input[type="radio"] {
+      accent-color: rgba(16, 87, 1, 0.92);
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .duration-group {
+      transition: all 0.3s ease;
+    }
+
+    .date-range {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .date-range .input-wrapper {
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .date-range .date-separator {
+      display: flex;
+      align-items: center;
+      color: #94a3b8;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0 0.2rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== FORM CONTAINER ===== -->
+  <div class="form-container">
+    <!-- ===== HEADER ===== -->
+    <div class="form-header">
+      <div class="form-header-left">
+        <div class="icon-wrapper">
+          <i class="fas fa-tree"></i>
+        </div>
+        <h2>Field <span>Data</span></h2>
+      </div>
+      <button class="logout-btn" id="logoutBtn">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+
+    <!-- ===== FORM ===== -->
+    <form id="dataForm" action="/data-entry" method="POST" enctype="multipart/form-data">
+
+      <!-- ===== NATURE OF EVENT ===== -->
+      <div class="form-group">
+        <label for="natureOfEvent"><i class="fas fa-tag"></i> Nature of Event</label>
+        <div class="input-wrapper">
+          <i class="fas fa-calendar-check input-icon"></i>
+          <select id="natureOfEvent" name="natureOfEvent" required>
+            <option value="">Select Event Type</option>
+            <option value="Tree Planting">🌳 Tree Planting</option>
+            <option value="Native Storytelling">📖 Native Storytelling</option>
+            <option value="Beating-up">🌱 Beating-up</option>
+            <option value="Follow-up Task">🌿 Follow-up Task</option>
+            <option value="Other">📌 Other</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ===== LOCATION + GPS ===== -->
+      <div class="form-group">
+        <label><i class="fas fa-map-pin"></i> Location</label>
+        <div class="location-row">
+          <div class="input-wrapper" style="flex:2; position:relative;">
+            <i class="fas fa-map-marker-alt input-icon"></i>
+            <input type="text" id="locationSearch" placeholder="Search for location..." autocomplete="off">
+            <div class="autocomplete-suggestions" id="autocompleteSuggestions"></div>
+          </div>
+          <button type="button" class="btn-location" id="getLocationBtn" style="flex:0 0 auto;">
+            <i class="fas fa-location-dot"></i> Get Current
+          </button>
+        </div>
+        <div class="gps-row">
+          <div class="input-wrapper">
+            <i class="fas fa-arrow-up input-icon"></i>
+            <input type="text" id="latitude" name="latitude" placeholder="Latitude">
+          </div>
+          <div class="input-wrapper">
+            <i class="fas fa-arrow-right input-icon"></i>
+            <input type="text" id="longitude" name="longitude" placeholder="Longitude">
+          </div>
+        </div>
+        <input type="hidden" id="location" name="location">
+      </div>
+
+      <!-- ===== DURATION ===== -->
+      <div class="form-group">
+        <label><i class="fas fa-calendar-alt"></i> Duration</label>
+        <div class="duration-options">
+          <label>
+            <input type="radio" name="durationType" value="single" checked> Single Day Event
+          </label>
+          <label>
+            <input type="radio" name="durationType" value="multiple"> Multiple Days Event
+          </label>
+        </div>
+        <div id="singleDayGroup" class="duration-group">
+          <div class="input-wrapper">
+            <i class="fas fa-calendar-day input-icon"></i>
+            <input type="date" id="eventDate" name="eventDate">
+          </div>
+        </div>
+        <div id="multipleDayGroup" class="duration-group" style="display:none;">
+          <div class="date-range">
+            <div class="input-wrapper">
+              <i class="fas fa-calendar-day input-icon"></i>
+              <input type="date" id="startDate" name="startDate" placeholder="Start Date">
+            </div>
+            <span class="date-separator">–</span>
+            <div class="input-wrapper">
+              <i class="fas fa-calendar-day input-icon"></i>
+              <input type="date" id="endDate" name="endDate" placeholder="End Date">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PROGRAM LEADER (Team Leader) ===== -->
+      <div class="form-group">
+        <label for="team_leader"><i class="fas fa-user-tie"></i> Program Leader (Team Leader)</label>
+        <div class="input-wrapper">
+          <i class="fas fa-user-circle input-icon"></i>
+          <input type="text" id="team_leader" name="team_leader" placeholder="Enter team leader name" required>
+        </div>
+      </div>
+
+      <!-- ===== PARTNERS ===== -->
+      <div class="form-group">
+        <label for="partners"><i class="fas fa-handshake"></i> Partners</label>
+        <div class="input-wrapper">
+          <i class="fas fa-users input-icon"></i>
+          <input type="text" id="partners" name="partners" placeholder="Enter partner organizations (e.g., CICARE, KEFRI)">
+        </div>
+      </div>
+
+      <!-- ===== ENVIRONMENTAL ACTION SECTION ===== -->
+      <div id="environmentalSection" class="conditional-section" style="display:none;">
+        <h3><i class="fas fa-tree"></i> Environmental Action</h3>
+
+        <div class="form-group">
+          <label for="species"><i class="fas fa-leaf"></i> Species Category</label>
+          <div class="input-wrapper">
+            <i class="fas fa-seedling input-icon"></i>
+            <select id="species" name="species">
+              <option value="">Select Species Category</option>
+              <option value="Indigenous">Indigenous</option>
+              <option value="Exotic">Exotic</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="tree_names"><i class="fas fa-tag"></i> Name of Trees</label>
+          <div class="input-wrapper">
+            <i class="fas fa-tree input-icon"></i>
+            <input type="text" id="tree_names" name="tree_names" placeholder="Enter tree names (local/English/scientific)">
+          </div>
+          <div class="field-note">
+            <i class="fas fa-info-circle"></i> Can be local name, English name, or scientific name
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="number_of_trees"><i class="fas fa-sort-numeric-up"></i> Number of Trees</label>
+          <div class="input-wrapper">
+            <i class="fas fa-tree input-icon"></i>
+            <input type="number" id="number_of_trees" name="number_of_trees" placeholder="Enter number of trees planted" min="0">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="seedling_source"><i class="fas fa-boxes"></i> Seedling Source</label>
+          <div class="input-wrapper">
+            <i class="fas fa-truck input-icon"></i>
+            <input type="text" id="seedling_source" name="seedling_source" placeholder="Where did the seedlings come from?">
+          </div>
+        </div>
+
+        <!-- Follow-up Note (only for Follow-up Task) -->
+        <div id="followupNoteGroup" style="display:none;">
+          <div class="form-group">
+            <label for="followup_note"><i class="fas fa-pen"></i> Follow-up Note</label>
+            <div class="input-wrapper">
+              <i class="fas fa-align-left input-icon" style="top:1.2rem;"></i>
+              <textarea id="followup_note" name="followup_note" rows="3" placeholder="Describe the nature of the follow up(e.g condition of the Trees,Storytelling Updates or Community Feedback))"></textarea>
+            </div>
+            <div class="field-note">
+              <i class="fas fa-info-circle"></i> Not mandatory. Describe tree health and upload pictures of what was done.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== STORYTELLING SECTION ===== -->
+      <div id="storytellingSection" class="conditional-section" style="display:none;">
+        <h3><i class="fas fa-book-open"></i> Storytelling</h3>
+
+        <div class="form-group">
+          <label for="storyDescription"><i class="fas fa-pen"></i> Briefly Describe Event</label>
+          <div class="input-wrapper">
+            <i class="fas fa-align-left input-icon" style="top:1.2rem;"></i>
+            <textarea id="storyDescription" name="storyDescription" rows="4" placeholder="Describe the event in 250-300 words..."></textarea>
+          </div>
+          <div style="text-align:right; font-size:0.75rem; color:#94a3b8; margin-top:4px;">
+            <span id="wordCount">0</span> / 300 words
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="narrativeTitles"><i class="fas fa-list"></i> List of Title(s) of Narratives</label>
+          <div class="input-wrapper">
+            <i class="fas fa-tag input-icon"></i>
+            <input type="text" id="narrativeTitles" name="narrativeTitles" placeholder="Enter narrative titles (comma separated)">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="voiceNotes"><i class="fas fa-microphone"></i> Voice Notes</label>
+          <div class="input-wrapper">
+            <i class="fas fa-file-audio input-icon"></i>
+            <input type="file" id="voiceNotes" name="voiceNotes" accept=".wav,.mp3">
+          </div>
+          <div class="field-note">
+            <i class="fas fa-info-circle"></i> For correct pronunciation, songs, and melodies (.wav, .mp3)
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== FILE UPLOAD ===== -->
+      <div class="conditional-section">
+        <h3><i class="fas fa-paperclip"></i> Upload Related Files (Max 3)</h3>
+        <div id="fileUploads">
+          <div class="form-group" style="margin-bottom:0.5rem;">
+            <div class="input-wrapper">
+              <i class="fas fa-file input-icon"></i>
+              <input type="file" name="files[]" accept=".docx,.txt,.pdf,.jpg,.png,.wav,.mp3">
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:0.5rem;">
+            <div class="input-wrapper">
+              <i class="fas fa-file input-icon"></i>
+              <input type="file" name="files[]" accept=".docx,.txt,.pdf,.jpg,.png,.wav,.mp3">
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:0.5rem;">
+            <div class="input-wrapper">
+              <i class="fas fa-file input-icon"></i>
+              <input type="file" name="files[]" accept=".docx,.txt,.pdf,.jpg,.png,.wav,.mp3">
+            </div>
+          </div>
+        </div>
+        <div class="field-note">
+          <i class="fas fa-info-circle"></i> Supported formats: .docx, .txt, .pdf, .jpg, .png, .wav, .mp3
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn-submit">
+        <i class="fas fa-paper-plane"></i> Submit Data
+      </button>
+    </form>
+
+    <!-- ===== SUCCESS MESSAGE ===== -->
+    <div class="success-message" id="successMessage">
+      <i class="fas fa-check-circle"></i>
+      <h3>Data Submitted Successfully!</h3>
+      <p>Thank you for recording this data.</p>
+    </div>
+
+    
+  </div>
+
+  <script>
+    // =============================================================
+    // ===== LOGOUT =====
+    // =============================================================
+    document.getElementById('logoutBtn').addEventListener('click', async () => {
+      try {
+        const res = await fetch('/logout', { method: 'POST', credentials: 'include' });
+        if (res.ok) window.location.href = '/';
+        else alert('Logout failed');
+      } catch (err) {
+        console.error(err);
+        alert('Logout failed');
+      }
+    });
+
+    // =============================================================
+    // ===== NATURE OF EVENT - CONDITIONAL SECTIONS =====
+    // =============================================================
+    const natureSelect = document.getElementById('natureOfEvent');
+    const envSection = document.getElementById('environmentalSection');
+    const storySection = document.getElementById('storytellingSection');
+    const followupGroup = document.getElementById('followupNoteGroup');
+
+    natureSelect.addEventListener('change', function() {
+      const value = this.value;
+
+      // Hide all conditional sections
+      envSection.style.display = 'none';
+      storySection.style.display = 'none';
+      followupGroup.style.display = 'none';
+
+      // Show Environmental Action for Tree Planting, Beating-up, Follow-up Task
+      if (value === 'Tree Planting' || value === 'Beating-up' || value === 'Follow-up Task') {
+        envSection.style.display = 'block';
+
+        // Show Follow-up Note only for Follow-up Task
+        if (value === 'Follow-up Task') {
+          followupGroup.style.display = 'block';
+        }
+      }
+
+      // Show Storytelling for Native Storytelling
+      if (value === 'Native Storytelling') {
+        storySection.style.display = 'block';
+      }
+
+      // Show both for "Other"
+      if (value === 'Other') {
+        envSection.style.display = 'block';
+        storySection.style.display = 'block';
+      }
+    });
+
+    // =============================================================
+    // ===== DURATION - SINGLE / MULTIPLE DAYS =====
+    // =============================================================
+    const durationRadios = document.querySelectorAll('input[name="durationType"]');
+    const singleDayGroup = document.getElementById('singleDayGroup');
+    const multipleDayGroup = document.getElementById('multipleDayGroup');
+    const eventDateInput = document.getElementById('eventDate');
+    const startDateInput = document.getElementById('startDate');
+    const endDateInput = document.getElementById('endDate');
+
+    // Set default to single day
+    singleDayGroup.style.display = 'block';
+    multipleDayGroup.style.display = 'none';
+
+    durationRadios.forEach(radio => {
+      radio.addEventListener('change', function() {
+        if (this.value === 'single') {
+          singleDayGroup.style.display = 'block';
+          multipleDayGroup.style.display = 'none';
+          // Clear multiple day fields
+          startDateInput.value = '';
+          endDateInput.value = '';
+          // Make single day field required
+          eventDateInput.required = true;
+          startDateInput.required = false;
+          endDateInput.required = false;
+        } else {
+          singleDayGroup.style.display = 'none';
+          multipleDayGroup.style.display = 'block';
+          // Clear single day field
+          eventDateInput.value = '';
+          // Make multiple day fields required
+          eventDateInput.required = false;
+          startDateInput.required = true;
+          endDateInput.required = true;
+        }
+      });
+    });
+
+    // Initially set single day as required
+    eventDateInput.required = true;
+    startDateInput.required = false;
+    endDateInput.required = false;
+
+    // =============================================================
+    // ===== WORD COUNTER (250-300 words) =====
+    // =============================================================
+    const storyDesc = document.getElementById('storyDescription');
+    const wordCountDisplay = document.getElementById('wordCount');
+
+    storyDesc.addEventListener('input', function() {
+      const text = this.value.trim();
+      const words = text === '' ? 0 : text.split(/\s+/).length;
+      wordCountDisplay.textContent = words;
+
+      if (words > 300) {
+        wordCountDisplay.style.color = '#dc2626';
+      } else {
+        wordCountDisplay.style.color = '#94a3b8';
+      }
+    });
+
+    // =============================================================
+    // ===== HYBRID LOCATION: OpenStreetMap Autocomplete =====
+    // =============================================================
+    const locationSearch = document.getElementById('locationSearch');
+    const locationHidden = document.getElementById('location');
+    const latInput = document.getElementById('latitude');
+    const lngInput = document.getElementById('longitude');
+    const suggestionsContainer = document.getElementById('autocompleteSuggestions');
+
+    let selectedLocation = null;
+
+    async function fetchSuggestions(query) {
+      if (query.length < 3) {
+        suggestionsContainer.classList.remove('show');
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=5&countrycodes=KE`
+        );
+        const data = await response.json();
+        renderSuggestions(data);
+      } catch (error) {
+        console.error('Error fetching location suggestions:', error);
+        suggestionsContainer.classList.remove('show');
+      }
+    }
+
+    function renderSuggestions(results) {
+      suggestionsContainer.innerHTML = '';
+      if (results.length === 0) {
+        suggestionsContainer.classList.remove('show');
+        return;
+      }
+
+      results.forEach(result => {
+        const div = document.createElement('div');
+        div.className = 'suggestion-item';
+        div.textContent = result.display_name;
+        div.dataset.lat = result.lat;
+        div.dataset.lon = result.lon;
+        div.dataset.displayName = result.display_name;
+
+        div.addEventListener('click', function() {
+          selectLocation(this.dataset.displayName, this.dataset.lat, this.dataset.lon);
+        });
+
+        suggestionsContainer.appendChild(div);
+      });
+
+      suggestionsContainer.classList.add('show');
+    }
+
+    function selectLocation(name, lat, lon) {
+      locationSearch.value = name;
+      locationHidden.value = name;
+      latInput.value = lat || '';
+      lngInput.value = lon || '';
+      selectedLocation = { name, lat, lon };
+      suggestionsContainer.classList.remove('show');
+    }
+
+    let debounceTimer;
+    locationSearch.addEventListener('input', function() {
+      clearTimeout(debounceTimer);
+      const query = this.value.trim();
+      if (query.length >= 3) {
+        debounceTimer = setTimeout(() => fetchSuggestions(query), 300);
+      } else {
+        suggestionsContainer.classList.remove('show');
+        locationHidden.value = '';
+      }
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.input-wrapper') && !e.target.closest('.autocomplete-suggestions')) {
+        suggestionsContainer.classList.remove('show');
+      }
+    });
+
+    // =============================================================
+    // ===== GEOLOCATION API =====
+    // =============================================================
+    document.getElementById('getLocationBtn').addEventListener('click', function() {
+      if (!navigator.geolocation) {
+        alert('Geolocation is not supported by your browser.');
+        return;
+      }
+
+      this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Locating...';
+      this.disabled = true;
+
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          const lat = position.coords.latitude.toFixed(6);
+          const lng = position.coords.longitude.toFixed(6);
+          latInput.value = lat;
+          lngInput.value = lng;
+
+          fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1`
+          )
+            .then(res => res.json())
+            .then(data => {
+              const displayName = data.display_name || `${lat}, ${lng}`;
+              locationSearch.value = displayName;
+              locationHidden.value = displayName;
+              selectedLocation = { name: displayName, lat, lon: lng };
+              document.getElementById('getLocationBtn').innerHTML = '<i class="fas fa-location-dot"></i> Get Current';
+              document.getElementById('getLocationBtn').disabled = false;
+            })
+            .catch(() => {
+              locationSearch.value = `${lat}, ${lng}`;
+              locationHidden.value = `${lat}, ${lng}`;
+              document.getElementById('getLocationBtn').innerHTML = '<i class="fas fa-location-dot"></i> Get Current';
+              document.getElementById('getLocationBtn').disabled = false;
+            });
+        },
+        function(error) {
+          console.error('Geolocation error:', error);
+          let message = 'Unable to retrieve your location.';
+          if (error.code === 1) message = 'Location access denied. Please enable location services.';
+          if (error.code === 2) message = 'Location unavailable. Please try again.';
+          if (error.code === 3) message = 'Location request timed out.';
+          alert(message);
+          document.getElementById('getLocationBtn').innerHTML = '<i class="fas fa-location-dot"></i> Get Current';
+          document.getElementById('getLocationBtn').disabled = false;
+        },
+        { enableHighAccuracy: true, timeout: 10000 }
+      );
+    });
+
+    // =============================================================
+    // ===== FILE UPLOAD - MAX 3 FILES =====
+    // =============================================================
+    document.querySelectorAll('input[type="file"][name="files[]"]').forEach(input => {
+      input.addEventListener('change', function() {
+        const fileInputs = document.querySelectorAll('input[type="file"][name="files[]"]');
+        let fileCount = 0;
+        fileInputs.forEach(f => {
+          if (f.files.length > 0) fileCount += f.files.length;
+        });
+
+        if (fileCount > 3) {
+          alert('You can upload a maximum of 3 files.');
+          this.value = '';
+        }
+      });
+    });
+
+    // =============================================================
+    // ===== FORM SUBMIT SUCCESS =====
+    // =============================================================
+    document.getElementById('dataForm').addEventListener('submit', function(e) {
+      const successMsg = document.getElementById('successMessage');
+      successMsg.classList.add('show');
+
+      setTimeout(() => {
+        successMsg.classList.remove('show');
+      }, 3000);
+    });
+  </script>
+  <script src="js/loginModal.js"></script>
+</body>
+</html>
