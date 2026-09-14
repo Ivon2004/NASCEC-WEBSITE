@@ -15,7 +15,7 @@ function createTransporter() {
 
   return nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: 587,
+    //port: 587,
     secure: false, // true for 465, false for 587
     auth: {
       user,
@@ -26,7 +26,7 @@ function createTransporter() {
     socketTimeout: 15000,
     tls: {
       rejectUnauthorized: true,
-      ciphers: "SSLv3",
+      //ciphers: "SSLv3",
     },
   });
 }

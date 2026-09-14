@@ -63,8 +63,13 @@ By combining restoration with storytelling, Musunji Comprehensive School is nurt
     title: "Our Impact Documentary",
     description: "Watch how we're making a difference in communities.",
     image: "IMAGES/video-thumbnail.jpg.jpeg",
+    imageCaption: "NASCEC Documentary - Our Impact Story",
+    photographer: {
+      name: "NASCEC Media Team",
+      website: "https://nascec.org"
+    },
     content: "This documentary showcases our projects and impact...",
-    video: "VIDEOS/nascec-video.MP4"
+    video: "https://youtu.be/ZqJkiKexN2I"
   }
 ];
 
@@ -338,6 +343,7 @@ function loadFeaturedStory(story) {
       ` : ''}
     </div>
   `;
+  
 }
 
 function loadOtherStories(stories) {
@@ -435,6 +441,19 @@ function renderStoryMedia(story) {
   modalMedia.innerHTML = "";
 
   if (story.video) {
+    const youtubeMatch = story.video.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/);
+
+    if (youtubeMatch) {
+      const iframe = document.createElement("iframe");
+      iframe.src = `https://www.youtube.com/embed/${youtubeMatch[1]}`;
+      iframe.title = story.title;
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
+      iframe.loading = "lazy";
+      modalMedia.appendChild(iframe);
+      return;
+    }
+
     const video = document.createElement("video");
     video.controls = true;
     video.preload = "metadata";
