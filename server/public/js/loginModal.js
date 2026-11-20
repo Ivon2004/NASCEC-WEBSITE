@@ -68,13 +68,21 @@ document.addEventListener('DOMContentLoaded', () => {
         method: 'POST', headers: {'Content-Type':'application/json'}, credentials: 'include', body: JSON.stringify(payload)
       });
       const data = await res.json().catch(()=>({}));
-      if (!res.ok || !data.success) throw new Error(data.message || 'Login failed');
+      console.log('Login response :', data);
+      if (!res.ok || data.success==false) {
+        throw new Error(data.message || 'Login failed');
+      }
       closeModal();
       // redirect to field_data
-      if (data.role === 'admin') window.location.href = '/admin_panel.html';
-      else window.location.href = data.redirectTo || '/field_data.html';
+      if (data.role === 'admin'){ 
+        window.location.href = '/admin_panel.html';
+      }else if (data.role === 'user'){
+        window.location.href = '/field_data.html';
+      }
+      //else window.location.href = data.redirectTo || '/field_data.html';
     } catch (err) {
       loginMsg.textContent = err.message || 'Login failed';
+      console.log("Error: ",err);
     }
   });
 });

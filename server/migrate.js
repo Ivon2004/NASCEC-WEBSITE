@@ -2,13 +2,21 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
-const db = new Pool({
-  host: process.env.DB_HOST || 'localhost',
+const dbPassword = process.env.DB_PASSWORD || process.env.DB_PASS || 'P0$tgre1';
+const dbHost = process.env.DB_HOST || 'localhost';
+const dbConfig = {
+  host: dbHost,
   user: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASS || 'P0$tgre1',
+  password: dbPassword,
   database: process.env.DB_NAME || 'Field_Data',
-  port: process.env.DB_PORT || 5432
-});
+  port: Number(process.env.DB_PORT || 5432)
+};
+
+if (process.env.DB_SSL === 'true' || (dbHost !== 'localhost' && dbHost !== '127.0.0.1' && dbHost !== '::1')) {
+  dbConfig.ssl = { rejectUnauthorized: false };
+}
+
+const db = new Pool(dbConfig);
 
 async function migrate() {
   try {

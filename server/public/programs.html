@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NASCEC | Programs</title>
+  <link rel="icon" type="image/png" href="/logo.jpeg">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -11,20 +12,28 @@
 
 
   <header>
-    <div id="logo_container">
-      <img src="IMAGES/logo.jpeg" alt="NASCEC Logo" class="logo">
-      <h1>NASCEC</h1>
+    <div class="header-container">
+      <div id="logo_container">
+        <img src="IMAGES/logo.jpeg" alt="NASCEC Logo" class="logo">
+        <h1>NASCEC</h1>
+      </div>
+      <button class="hamburger" id="hamburger-btn" type="button" aria-label="Toggle navigation" aria-controls="nav-menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <nav class="nav-menu" id="nav-menu">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="about">About Us</a></li>
+          <li><a href="programs" class="active">Programs</a></li>
+          <li><a href="stories">Stories</a></li>
+          <li><a href="gallery">Gallery</a></li>
+          <li><a href="#" class="open-login">Field Data</a></li>
+          <li><a href="contact">Contact Us</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="programs.html">Programs</a>
-      <a href="stories.html">Stories</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="#" class="nav-cta open-login">Field Data</a>
-    
-      <a href="contact.html">Contact Us</a>
-    </nav>
   </header>
 
   <main class="page-shell">
@@ -48,7 +57,11 @@
               <h3>Elders' Wisdom Archives</h3>
               <div class="program-image-wrap">
                 <figure class="program-figure">
-                  <img src="IMAGES/elders.jpg" alt="Elders Sharing Stories" class="program-image">
+                  <div class="program-image-frame">
+                    <img src="IMAGES/elders.jpg" alt="Elders Sharing Stories" class="program-image">
+                    <button class="nav-btn nav-left" onclick="prevProgram()" aria-label="Previous program">&lsaquo;</button>
+                    <button class="nav-btn nav-right" onclick="nextProgram()" aria-label="Next program">&rsaquo;</button>
+                  </div>
                   <figcaption>
                     <span class="program-caption">Elders Sharing Stories</span>
                     <span class="program-credit">Photo: NASCEC Media Team</span>
@@ -74,7 +87,11 @@
               <h3>Storytelling for Restoration</h3>
               <div class="program-image-wrap">
                 <figure class="program-figure">
-                  <img src="IMAGES/Storytelling.jpg" alt="Storytelling for Restoration" class="program-image">
+                  <div class="program-image-frame">
+                    <img src="IMAGES/Storytelling.jpg" alt="Storytelling for Restoration" class="program-image">
+                    <button class="nav-btn nav-left" onclick="prevProgram()" aria-label="Previous program">&lsaquo;</button>
+                    <button class="nav-btn nav-right" onclick="nextProgram()" aria-label="Next program">&rsaquo;</button>
+                  </div>
                   <figcaption>
                     <span class="program-caption">Young children listen as a elders tell a story about nature, and these activities ensure through oral tradition the children  build environmental awareness</span>
                     <span class="program-credit">Photo: NASCEC Media Team</span>
@@ -98,7 +115,11 @@
               <h3>Cultural Ecology Festival</h3>
               <div class="program-image-wrap">
                 <figure class="program-figure">
-                  <img src="IMAGES\Youth participants engage in a game of Snakes and Ladders during an indoor session as a tool for strategic thinking and peer interaction.jpg" class="program-image">
+                  <div class="program-image-frame">
+                    <img src="IMAGES\\Youth participants engage in a game of Snakes and Ladders during an indoor session as a tool for strategic thinking and peer interaction.jpg" class="program-image">
+                    <button class="nav-btn nav-left" onclick="prevProgram()" aria-label="Previous program">&lsaquo;</button>
+                    <button class="nav-btn nav-right" onclick="nextProgram()" aria-label="Next program">&rsaquo;</button>
+                  </div>
                   <figcaption>
                     <span class="program-caption">Youth participants engage in a game of Snakes and Ladders during an indoor session as a tool for strategic thinking and peer interaction.</span>
                     <span class="program-credit">Photo: NASCEC Media Team</span>
@@ -123,7 +144,11 @@
               <h3>Youth Ambassador Corps (YAC)</h3>
               <div class="program-image-wrap">
                 <figure class="program-figure">
-                  <img src="IMAGES/youth.jpg" alt="Youth Ambassadors" class="program-image">
+                  <div class="program-image-frame">
+                    <img src="IMAGES/youth.jpg" alt="Youth Ambassadors" class="program-image">
+                    <button class="nav-btn nav-left" onclick="prevProgram()" aria-label="Previous program">&lsaquo;</button>
+                    <button class="nav-btn nav-right" onclick="nextProgram()" aria-label="Next program">&rsaquo;</button>
+                  </div>
                   <figcaption>
                     <span class="program-caption">Youth Ambassador Corps</span>
                     <span class="program-credit">Photo: NASCEC Media Team</span>
@@ -143,8 +168,6 @@
             </div>
           </div>
 
-          <button class="nav-btn nav-left" onclick="prevProgram()" aria-label="Previous program">&lsaquo;</button>
-          <button class="nav-btn nav-right" onclick="nextProgram()" aria-label="Next program">&rsaquo;</button>
         </div>
       </div>
     </section>
@@ -157,13 +180,13 @@
       <a href="https://www.youtube.com/channel/UCRepZ9ndd3mmdIUkpGHRqGQ" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
         <i class="fab fa-youtube" style="color:#ff0000;"></i> YouTube
       </a>
-      <a href="https://www.linkedin.com/in/nascec-cbo-b0a99a428/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
+      <a href="https://www.linkedin.com/in/nascec-cbo-b0a99a428/" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
         <i class="fab fa-linkedin-in" style="color:#0a66c2;"></i> LinkedIn
       </a>
       <a href="mailto:contact.us@nascec.org" style="color:#fff; text-decoration:none; font-size:0.9rem;">
         <i class="fas fa-envelope" style="color:#ea4335;"></i> Email
       </a>
-      <a href="https://wa.me/254700000000?text=Hello%20NASCEC" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
+      <a href="https://wa.me/254711883696?text=Hello%20NASCEC" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
         <i class="fab fa-whatsapp" style="color:#25d366;"></i> WhatsApp
       </a>
     </div>
@@ -174,6 +197,7 @@
 </footer>
 
   <script src="css/js/programs.js"></script>
+  <script src="js/header.js" type="text/javascript"></script>
 </body>
   </body>
   <script src="js/loginModal.js"></script>

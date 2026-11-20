@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us | NASCEC</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/logo.jpeg">
+  <link rel="stylesheet" href="css/style.css"type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" type="text/css">
   <style>
     /* ===== ABOUT PAGE STYLES ===== */
     .about-page {
@@ -407,26 +408,35 @@
 
   <!-- ===== HEADER ===== -->
   <header>
-    <div id="logo_container">
-      <img src="IMAGES/logo.jpeg" alt="NASCEC Logo" class="logo">
-      <h1>NASCEC</h1>
+    <div class="header-container">
+      <div id="logo_container">
+        <img src="IMAGES/logo.jpeg" alt="NASCEC Logo" class="logo">
+        <h1>NASCEC</h1>
+      </div>
+      <button class="hamburger" id="hamburger-btn" type="button" aria-label="Toggle navigation" aria-controls="nav-menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <nav class="nav-menu" id="nav-menu">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="about" class="active">About Us</a></li>
+          <li><a href="programs">Programs</a></li>
+          <li><a href="stories">Our Stories</a></li>
+          <li><a href="gallery">Gallery</a></li>
+          <li><a href="#" class="open-login">Field Data</a></li>
+          <li><a href="contact">Contact Us</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="programs.html">Programs</a>
-      <a href="stories.html">Stories</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="#" class="nav-cta open-login">Field Data</a>
-      <a href="contact.html">Contact Us</a>
-    </nav>
   </header>
 
   <!-- ===== ABOUT US SECTION ===== -->
   <section>
     <div id="about-us">
       <h2>About Us</h2>
-      <h3>Rooted in Vihiga, this is where our journey begins</h3>
+      <h3>Rooted in Vihiga, This is Where Our Journey Begins</h3>
       <p>
         Our journey began under the canopy of Tiriki Forest, as we walked in the thin footpaths followed by those who seek firewood and herbs in the forest. Here elders lamented that the stories, song and the proverbs of the old golden days were fading alongside the forests that once covered our land. We then realized that the erosion of our cultural memory and the erosion of our soils, as well as the declining state of our biodiversity were the same story. As NASCEC, we exist to rewrite that story.
       </p>
@@ -434,7 +444,7 @@
         We are not just an outside CBO. We are farmers, teachers, elders, retirees, youth, etc, from within Vihiga, more so, Tiriki land. We believe that the ancient wisdom embedded in our folktales is not merely history, or mythology, it is a practical, living guidebook for environmental stewardship. It teaches us which native trees like to plant, how to read the rains, and why sacred groves are to be protected. Our mission is to harness this indigenous knowledge through the power of native storytelling to tackle today's challenges of climate change, deforestation, water scarcity, and cultural loss.
       </p>
 
-      <h3>Our work is a circle</h3>
+     
       <p>
         We record the stories, we plant the trees mentioned in them, and we teach the next generation to value both. From the edges of Kibiri Forest to the uttermost parts of Vihiga County, we are building a people-driven movement that honors our past to secure our future.
       </p>
@@ -466,7 +476,7 @@
             </button>
 
             <div class="team-bio-wrapper">
-              <p class="team-bio">He is a communication and film scholar and a Doctoral Researcher in Anthropology of Climate Change and Environmental Conservation at the University of Cologne, where he is affiliated with the Global South Studies Center (GSSC). His work focuses on eco-narratives, ethnology and environmental visual anthropology. He holds an MA in Film Studies from Kenyatta University and a BA in Communication and Media Technology from Maseno University. As a filmmaker, screenplay writer, and former junior lecturer, his works currently focuses on exploring how storytelling shapes environmental attitudes.</p>
+              <p class="team-bio">He is a DAAD scholar and a Doctoral Researcher in Anthropology of Climate Change and Environmental Conservation at the University of Cologne, where he is affiliated with the Global South Studies Center (GSSC). His work focuses on eco-narratives and environmental visual anthropology. He holds an MA in Film Studies from Kenyatta University and a BA in Communication and Media Technology from Maseno University. As a filmmaker, screenplay writer, and former junior lecturer, his works currently focuses on exploring how storytelling shapes environmental attitudes.</p>
             </div>
 
             <div class="team-connect">
@@ -707,13 +717,13 @@
       <a href="https://www.youtube.com/channel/UCRepZ9ndd3mmdIUkpGHRqGQ" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
         <i class="fab fa-youtube" style="color:#ff0000;"></i> YouTube
       </a>
-      <a href="https://www.linkedin.com/in/nascec-cbo-b0a99a428/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
+      <a href="https://www.linkedin.com/in/nascec-cbo-b0a99a428/" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
         <i class="fab fa-linkedin-in" style="color:#0a66c2;"></i> LinkedIn
       </a>
       <a href="mailto:contact.us@nascec.org" style="color:#fff; text-decoration:none; font-size:0.9rem;">
         <i class="fas fa-envelope" style="color:#ea4335;"></i> Email
       </a>
-      <a href="https://wa.me/254700000000?text=Hello%20NASCEC" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
+      <a href="https://wa.me/254711883696?text=Hello%20NASCEC" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
         <i class="fab fa-whatsapp" style="color:#25d366;"></i> WhatsApp
       </a>
     </div>
@@ -740,6 +750,7 @@
       }
     }
   </script>
-  <script src="js/loginModal.js"></script>
+  <script src="js/header.js" type="text/javascript"></script>
+  <script src="js/loginModal.js" type="text/javascript"></script>
 </body>
 </html>

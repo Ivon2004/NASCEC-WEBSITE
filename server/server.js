@@ -1,4 +1,5 @@
 // server.js
+require('dotenv').config();
 require("dotenv").config({ path: __dirname + '/.env' });
 
 const express = require("express");
@@ -44,21 +45,34 @@ app.use(session({
 }));
 
 // ===== DATABASE CONNECTION =====
-const db = new Pool({
-    host: process.env.DB_HOST || 'localhost',
+const dbPassword = process.env.DB_PASSWORD || process.env.DB_PASS || 'P0$tgre1';
+const dbHost = process.env.DB_HOST || 'localhost';
+const dbConfig = {
+    host: dbHost,
     user: process.env.DB_USER || 'postgres',
-    password: process.env.DB_PASS || 'P0$tgre1',
+    password: dbPassword,
     database: process.env.DB_NAME || 'Field_Data',
-    port: process.env.DB_PORT || 5432,
+    port: Number(process.env.DB_PORT || 5432),
     max: 20,
     idleTimeoutMillis: 30000,
-    connectionTimeoutMillis: 2000,
-});
+    connectionTimeoutMillis: 5000,
+};
+
+// Remove the automatic hostname checking and rely strictly on your env variable
+if (process.env.DB_SSL === 'true') {
+    dbConfig.ssl = { rejectUnauthorized: false };
+}
+
+
+const db = new Pool(dbConfig);
 
 // Test the connection
 db.connect((err, client, release) => {
     if (err) {
-        return console.error('❌ Error connecting to PostgreSQL:', err.stack);
+        console.error(`❌ Error connecting to PostgreSQL at ${dbConfig.host}:${dbConfig.port} (${dbConfig.database}).`);
+        console.error('Check DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, and DB_SSL settings, and confirm the PostgreSQL server is reachable.');
+        console.error(err.stack);
+        return;
     }
     console.log('✅ Successfully connected to PostgreSQL database!');
     release();
@@ -68,6 +82,21 @@ db.connect((err, client, release) => {
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
+
+const pageRoutes = {
+    '/about': 'about.html',
+    '/programs': 'programs.html',
+    '/stories': 'stories.html',
+    '/gallery': 'gallery.html',
+    '/contact': 'contact.html',
+    '/partnership': 'partnership.html',
+};
+
+for (const [route, file] of Object.entries(pageRoutes)) {
+    app.get(route, (req, res) => {
+        res.sendFile(path.join(__dirname, 'public', file));
+    });
+}
 
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
@@ -133,6 +162,7 @@ function isAdmin(req, res, next) {
 // Login
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
+    const normalizedUsername = String(username || '').trim().toLowerCase();
     try {
         console.log('LOGIN attempt for username:', username);
         
@@ -143,12 +173,12 @@ app.post('/login', async (req, res) => {
             });
         }
 
-        const result = await db.query("SELECT * FROM users WHERE username = $1", [username]);
+        const result = await db.query("SELECT * FROM users WHERE username = $1", [normalizedUsername]);
 
         if (result.rows.length === 0) {
             return res.status(401).json({ 
                 success: false, 
-                message: 'Invalid username or password' 
+                message: 'Invalid username or passsword' 
             });
         }
 
@@ -184,7 +214,7 @@ app.post('/login', async (req, res) => {
         } else {
             res.status(401).json({ 
                 success: false, 
-                message: 'Invalid username or password' 
+                message: 'Invalid username or passwoord' 
             });
         }
     } catch (err) {

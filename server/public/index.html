@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NASCEC | Home</title>
-  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- FIXED FAVICON (Using .png and matching your folder structure) -->
+  <link rel="icon" type="image/png" href="/IMAGES/logo.jpeg">
+  
+  <!-- FIXED STRUCTURED DATA -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NASCEC",
+    "url": "https://nascec.org",
+    "logo": "https://nascec.org/IMAGES/logo.jpeg",
+    "description": "NASCEC is a Community Based Organisation."
+  }
+  </script>
+  
+  <meta name="description" content="NASCEC is a Community Based Organisation dedicated to harness this indigenous knowledge through the power of native storytelling to tackle today's challenges of climate change, deforestation, water scarcity, and cultural loss.">
+  
+  <link rel="stylesheet" href="./css/style.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body class="home-page">
@@ -12,19 +31,28 @@
   
   <main class="main">
     <header>
-      <div id="logo_container">
-        <img src="IMAGES/logo.jpeg" alt="NASCEC Logo" class="logo">
-        <h1>NASCEC</h1>
+      <div class="header-container">
+        <div id="logo_container">
+          <img src="IMAGES/logo.jpeg" alt="NASCEC Logo" class="logo">
+          <h1>NASCEC</h1>
+        </div>
+        <button class="hamburger" id="hamburger-btn" type="button" aria-label="Toggle navigation" aria-controls="nav-menu" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <nav class="nav-menu" id="nav-menu">
+          <ul>
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="about">About Us</a></li>
+            <li><a href="programs">Programs</a></li>
+            <li><a href="stories">Our Stories</a></li>
+            <li><a href="gallery">Gallery</a></li>
+            <li><a href="#" class="open-login">Field Data</a></li>
+            <li><a href="contact">Contact Us</a></li>
+          </ul>
+        </nav>
       </div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="programs.html">Programs</a>
-        <a href="stories.html">Stories</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="#" class="nav-cta open-login">Field Data</a>
-        <a href="contact.html">Contact Us</a>
-      </nav>
     </header>
 
     <div class="hero">
@@ -40,8 +68,8 @@
         <p>
           Welcome to Native Storytellers for Culture and Environmental Conservation (NASCEC) CBO, a community-powered initiative born in the heart of Vihiga County. In NASCEC, we believe that the indigenous wisdom carried in our elders' stories holds the key to a sustainable green future. Our mission is simple yet profound: to revive our rich cultural ecological consciousness and restore our natural environment by bridging generations through the timeless art of native storytelling. We are not just conserving; we are re-activating the deep, indigenous knowledge that did sustain our community for centuries.
         </p>
-        <a href="programs.html" class="btn">Our Programs</a>
-        <a href="stories.html" class="btn">Community Stories</a>
+        <a href="programs" class="btn">Our Programs</a>
+        <a href="stories" class="btn">Community Stories</a>
       </div>
     </div>
 
@@ -87,7 +115,7 @@
              <li style="margin-bottom: 12px;">Support for intergenerational knowledge transfer</li>
              <li style="margin-bottom: 12px;"> Build your brand around meaningful conservation efforts</li>
             </ul>
-            <a href="partnership.html" class="btn partner-cta">Start a Partnership</a>
+            <a href="partnership" class="btn partner-cta">Start a Partnership</a>
           </div>
           <div class="partnership-gallery" id="partnership-gallery">
           </div>
@@ -101,7 +129,7 @@
         <p>
           Our work is driven by community. Whether you have a story to share, hands ready to plant, or a passion to support, there is a place for you here.
         </p>
-        <a href="contact.html" class="btn">Get Involved Today</a>
+        <a href="contact" class="btn">Get Involved Today</a>
       </div>
     </section>
   </main>
@@ -113,13 +141,13 @@
       <a href="https://www.youtube.com/channel/UCRepZ9ndd3mmdIUkpGHRqGQ" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
         <i class="fab fa-youtube" style="color:#ff0000;"></i> YouTube
       </a>
-      <a href="https://www.linkedin.com/in/nascec-cbo-b0a99a428/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
+      <a href="https://www.linkedin.com/in/nascec-cbo-b0a99a428/" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
         <i class="fab fa-linkedin-in" style="color:#0a66c2;"></i> LinkedIn
       </a>
       <a href="mailto:contact.us@nascec.org" style="color:#fff; text-decoration:none; font-size:0.9rem;">
         <i class="fas fa-envelope" style="color:#ea4335;"></i> Email
       </a>
-      <a href="https://wa.me/254700000000?text=Hello%20NASCEC" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
+      <a href="https://wa.me/254711883696?text=Hello%20NASCEC" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-size:0.9rem;">
         <i class="fab fa-whatsapp" style="color:#25d366;"></i> WhatsApp
       </a>
     </div>
@@ -202,6 +230,7 @@
       }
     });
   </script>
-  <script src="js/loginModal.js"></script>
+  <script src="js/header.js" type="text/javascript"></script>
+  <script src="js/loginModal.js" type="text/javascript"></script>
 </body>
 </html>
